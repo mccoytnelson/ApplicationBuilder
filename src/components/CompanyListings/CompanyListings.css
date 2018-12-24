@@ -1,0 +1,9 @@
+.CompanyListing{
+    padding-top: 2vh;
+}
+.build{
+    width: 77vw;
+min-height: 15vh;
+background-color: gray;
+margin: 1vh;
+}

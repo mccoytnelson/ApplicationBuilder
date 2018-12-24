@@ -1,0 +1,61 @@
+
+.listing{
+width: 50vw;
+min-height: 15vh;
+background-color: gray;
+margin: 1vh;
+}
+.rectangle{ 
+    background: #C4C4C4;
+}
+.Ellipse{
+    background: #9A9A9A;
+    border-radius: 50%;
+}
+.rectangle2{
+    background: #9A9A9A;
+}
+
+.rectangle3{
+    background: #9A9A9A;
+}
+/* Cashier */
+position: absolute;
+left: 3.41%;
+right: 69.99%;
+top: 14.2%;
+bottom: 67.28%;
+/* Location */
+position: absolute;
+left: 34.6%;
+right: 38.79%;
+top: 14.2%;
+bottom: 67.28%;
+olor: #000000;
+
+
+
+/* Rectangle 3 */
+
+position: absolute;
+left: 3.41%;
+right: 26.34%;
+top: 40.12%;
+bottom: 11.73%;
+
+background: #9A9A9A;
+
+
+/* desc */
+position: absolute;
+left: 3.41%;
+right: 26.34%;
+top: 40.12%;
+bottom: 11.73%;
+
+/* logo */
+position: absolute;
+left: 83.09%;
+right: 7.86%;
+top: 32.72%;
+bottom: 32.72%;
