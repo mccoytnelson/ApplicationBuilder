@@ -1,0 +1,1 @@
+select * from question where listing_id=$1

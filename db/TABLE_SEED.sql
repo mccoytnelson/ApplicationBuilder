@@ -48,8 +48,8 @@ create table question(
     question_id serial primary key,
     listing_id int REFERENCES listing(listing_id),
     question text,
-    choice boolean,
-    not_choice_points INT
+    choice text,
+    not_choice_points text
 );
 create table choice(
     choice_id serial primary key,

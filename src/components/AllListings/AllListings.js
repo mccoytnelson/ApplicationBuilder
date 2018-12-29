@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import RenderCompanyListing from '../RenderCompanyListing/RenderCompanyListing'
+import './AllListings.css'
 import axios from 'axios'
-import './CompanyListings.css'
-class CompanyListings extends Component {
+import ListingSummary from '../ListingSummary/ListingSummary'
+
+
+export default class AllListings extends Component {
     constructor() {
         super()
         this.state = {
             listings: false,
-            completed: true
         }
     }
     async componentDidMount() {
-        let res = await axios.get(`/retrieve/completed/${this.props.match.params.id}`)
+        let res = await axios.get('/retrieve/listings')
         this.setState({ listings: res.data })
         console.log(this.state.listings)
     }
@@ -22,7 +22,7 @@ class CompanyListings extends Component {
             (e) => {
                 return all.push(
                     <div key={e.listing_id}>
-                    <RenderCompanyListing completed={this.state.completed} listing={e} />
+                    <ListingSummary  listing={e} />
                     </div>
                 )
             }
@@ -38,15 +38,9 @@ class CompanyListings extends Component {
         }
 
         return (
-            <div className='center'>
-                <div className='CompanyListing' />
-                <Link to='/create/listing'><div className='build' /></Link>
-                <div>
+            <div>
                 {mapped}
             </div>
-            </div>
-        );
+        )
     }
 }
-
-export default CompanyListings;

@@ -1,0 +1,1 @@
+select * from choice where question_id = $1

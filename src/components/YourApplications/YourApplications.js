@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import RenderCompanyListing from '../RenderCompanyListing/RenderCompanyListing'
 import axios from 'axios'
-import './CompanyListings.css'
-class CompanyListings extends Component {
+import RenderCompletedListing from '../RenderCompletedListing/RenderCompletedListing'
+
+
+export default class YourApplications extends Component {
     constructor() {
         super()
         this.state = {
@@ -22,7 +22,7 @@ class CompanyListings extends Component {
             (e) => {
                 return all.push(
                     <div key={e.listing_id}>
-                    <RenderCompanyListing completed={this.state.completed} listing={e} />
+                    <RenderCompletedListing completed={this.state.completed} listing={e} />
                     </div>
                 )
             }
@@ -38,15 +38,9 @@ class CompanyListings extends Component {
         }
 
         return (
-            <div className='center'>
-                <div className='CompanyListing' />
-                <Link to='/create/listing'><div className='build' /></Link>
-                <div>
+            <div>
                 {mapped}
             </div>
-            </div>
-        );
+        )
     }
 }
-
-export default CompanyListings;

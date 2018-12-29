@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addToAmount } from '../../ducks/reducer'
+import { uploadData } from '../../ducks/reducer'
 import Question from '../../components/Question/Question'
 import axios from 'axios';
-// import { Link } from 'react-router-dom'
 import './CreateListing.css'
 
 class CreateListing extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            amountOfQuestions: 1
+            amountOfQuestions: 1,
+            daisyChain: false
         }
     }
     questionRender = (howMany) => {
@@ -18,15 +18,12 @@ class CreateListing extends Component {
         let toRender = [];
         while (i < howMany) {
             i++
-            toRender.push(<Question />)
+            toRender.push(<div key={i}><Question ref='triggerDaisy' daisyChain={this.state.daisyChain}/></div>)
         }
         return toRender
     }
     addOne = () => {
         this.setState({ amountOfQuestions: this.state.amountOfQuestions + 1 })
-    }
-    daisyChain = (id) => {
-
     }
     submitApplication = async () => {
         let { id, companyName, companySummary, companyPhone, companyAddress } = this.props
@@ -34,7 +31,8 @@ class CreateListing extends Component {
         let res = await axios.post('/create/listing', {
             id, companyName, companyAddress, companySummary, companyPhone, position, location, salary, description
         });
-        this.daisyChain(res.data.listingID);
+        this.setState({daisyChain: res.data.listingID})
+        
     }
     render() {
         let questions = this.questionRender(this.state.amountOfQuestions)
@@ -71,4 +69,4 @@ class CreateListing extends Component {
 function mapStateToProps(state) {
     return { ...state }
 }
-export default connect(mapStateToProps, { addToAmount })(CreateListing)
+export default connect(mapStateToProps, {uploadData })(CreateListing)

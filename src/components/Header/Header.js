@@ -10,10 +10,14 @@ class Header extends Component {
         super()
         this.reset = this.reset.bind(this)
     }
-    async componentDidMount(){
+    async componentDidMount(){ 
         let res = await axios.get('/auth/dev');
         this.props.uploadData(res.data);
       }
+    async componentDidUpdate(){
+        let res = await axios.get('/auth/dev');
+        this.props.uploadData(res.data);
+    }
     async reset(){
         await axios.get('/auth/reset',
         console.log('database purged')
@@ -34,7 +38,7 @@ class Header extends Component {
             ifLogged = (<div className='logBarDiv'><Link to='/login' className='button'>Login</Link></div>)
             }
         if(this.props.companyName){
-            ifCompany = (<div className='logBarDiv'><Link to='/company/listings' className='button'>COMPANY LISTINGS</Link></div>)
+            ifCompany = (<div className='logBarDiv'><Link to={`/company/listings/${this.props.id}`} className='button'>COMPANY LISTINGS</Link></div>)
         }
         return(
             <div className='logBar'>
@@ -45,7 +49,7 @@ class Header extends Component {
             {ifLogged}
             <div className='logBarDiv'><Link to='/information' className='button'>YOUR INFORMATION</Link></div>
             <div className='logBarDiv'><Link to='/listings' className='button'>ALL LISTINGS</Link></div>
-            <div className='logBarDiv'><Link to='/applications' className='button'>YOUR APPLICATIONS</Link></div>
+            <div className='logBarDiv'><Link to={`/applications/${this.props.id}`} className='button'>YOUR APPLICATIONS</Link></div>
             {ifCompany}
             {ifUser}
             

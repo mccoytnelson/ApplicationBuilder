@@ -5,6 +5,7 @@ const massive = require('massive')
 const authentication = require('./authentication')
 const edits = require('./edits')
 const uploads = require('./uploads')
+const retrieval = require('./retrieval')
 
 
 const app = express()
@@ -38,5 +39,17 @@ app.get('/api/user-data',authentication.userData)
 app.get('/auth/reset', authentication.reset)
 app.post('/auth/signup', authentication.signUp )
 app.post('/auth/login',authentication.login)
+
 app.put('/edit/userinformation/:id',edits.editUserInformation)
+
 app.post('/create/listing', uploads.uploadListing)
+app.post('/create/question',uploads.uploadQuestion)
+app.post('/create/multi',uploads.uploadMulti)
+app.post('/create/application',uploads.uploadApplication)
+app.post('/create/answered',uploads.uploadAnsweredQuestion)
+
+app.get('/retrieve/listings', retrieval.getAllListings)
+app.get('/retrieve/listing/:id', retrieval.getSpecificListing)
+app.get('/retrieve/questions/:id', retrieval.getQuestions)
+app.get('/retrieve/completed/:id', retrieval.getCompleted)
+app.post('/retrieve/multi', retrieval.getMulti)
