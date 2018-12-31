@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import RenderCompletedListing from '../RenderCompletedListing/RenderCompletedListing'
+import RenderCompletedListing from './RenderCompletedListing/RenderCompletedListing';
 
 
 export default class YourApplications extends Component {
@@ -12,9 +12,8 @@ export default class YourApplications extends Component {
         }
     }
     async componentDidMount() {
-        let res = await axios.get(`/retrieve/completed/${this.props.match.params.id}`)
+        let res = await axios.get(`/retrieve/applications/${this.props.match.params.id}`)
         this.setState({ listings: res.data })
-        console.log(this.state.listings)
     }
     mapListings() {
         let all = [];
@@ -22,7 +21,7 @@ export default class YourApplications extends Component {
             (e) => {
                 return all.push(
                     <div key={e.listing_id}>
-                    <RenderCompletedListing completed={this.state.completed} listing={e} />
+                    <RenderCompletedListing listing={e} />
                     </div>
                 )
             }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import axios from 'axios';
 import { connect } from 'react-redux'
-class RenderCompletedListing extends Component {
+class RenderUserListings extends Component {
     constructor() {
         super()
         this.state = {
@@ -12,7 +12,6 @@ class RenderCompletedListing extends Component {
     }
     async componentDidMount() {
         let res = await axios.get(`/retrieve/listing/${this.props.listing.listing_id}`)
-        // let res2 = await axios.get(`/retrieve/questions/${this.props.match.params.id}`)
         this.setState({ listing: res.data })
     }
     render() {
@@ -25,8 +24,8 @@ class RenderCompletedListing extends Component {
                 <div>Company Name: {listing.company_name}</div>
                 <div>Company Summary: {listing.company_summary}</div>
                 <div>Description: {listing.description}</div>
+                <Link to={`/completed-application/${this.props.listing.completed_id}`}><button>See Completed Application</button></Link>
                 <hr />
-                
             </div>
         )
     }
@@ -35,4 +34,4 @@ class RenderCompletedListing extends Component {
 function mapStateToProps(state) {
     return { ...state }
 }
-export default connect(mapStateToProps)(RenderCompletedListing);
+export default connect(mapStateToProps)(RenderUserListings);

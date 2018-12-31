@@ -12,12 +12,14 @@ class CompanyListings extends Component {
         }
     }
     async componentDidMount() {
-        let res = await axios.get(`/retrieve/completed/${this.props.match.params.id}`)
+        let res = await axios.get(`/retrieve/company-listings/${this.props.match.params.id}`)
+        console.log(res)
         this.setState({ listings: res.data })
         console.log(this.state.listings)
     }
     mapListings() {
         let all = [];
+        console.log(this.state.listings)
         this.state.listings.map(
             (e) => {
                 return all.push(
@@ -33,8 +35,6 @@ class CompanyListings extends Component {
         let mapped = (<div>Repopulate your database</div>)
         if (this.state.listings) {
             mapped = this.mapListings()
-        } else {
-            console.log('repopulate your database')
         }
 
         return (

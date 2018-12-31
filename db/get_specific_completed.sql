@@ -1,0 +1,1 @@
+select * from completed where completed_id=$1

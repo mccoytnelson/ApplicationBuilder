@@ -5,16 +5,23 @@ module.exports={
         res.status(200).send(listings)
     },
     async getSpecificListing(req,res){
-        let id = req.params
+        let {id} = req.params
         let db = req.app.get('db')
-        let listing = await db.get_specific_listing([id.id])
+        let listing = await db.get_specific_listing([id])
         listing = listing[0]
         res.status(200).send(listing)
     },
-    async getQuestions(req,res){
-        let id = req.params
+    async getCompanyListings(req,res){
+        let {id} = req.params
         let db = req.app.get('db')
-        let questions = await db.get_questions([id.id])
+        let listing = await db.get_company_listings([id])
+        listing = listing
+        res.status(200).send(listing)
+    },
+    async getQuestions(req,res){
+        let {id} = req.params
+        let db = req.app.get('db')
+        let questions = await db.get_questions([id])
         questions
         res.status(200).send(questions)
     },
@@ -30,5 +37,19 @@ module.exports={
         let db = req.app.get('db')
         let listings = await db.get_completed([id])
         res.status(200).send(listings)
+    },
+    async getSpecificCompleted(req,res){
+        let {id} = req.params
+        let db = req.app.get('db')
+        let listing = await db.get_specific_completed([id])
+        listing = listing[0]
+        res.status(200).send(listing)
+    },
+    async getAnswered(req,res){
+        let {completed_id,question_id} = req.params
+        let db = req.app.get('db')
+        let answer = await db.get_answered([completed_id,question_id])
+        answer = answer[0]
+        res.status(200).send(answer)
     },
 }

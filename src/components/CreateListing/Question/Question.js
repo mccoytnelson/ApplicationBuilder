@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import MultipleChoice from '../MultipleChoice/MultipleChoice'
+import MultipleChoice from './MultipleChoice/MultipleChoice'
 import axios from 'axios'
-import { uploadData } from '../../ducks/reducer'
+import { uploadData } from '../../../ducks/reducer'
 import './Question.css'
 
 

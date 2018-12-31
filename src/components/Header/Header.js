@@ -14,10 +14,6 @@ class Header extends Component {
         let res = await axios.get('/auth/dev');
         this.props.uploadData(res.data);
       }
-    async componentDidUpdate(){
-        let res = await axios.get('/auth/dev');
-        this.props.uploadData(res.data);
-    }
     async reset(){
         await axios.get('/auth/reset',
         console.log('database purged')
@@ -42,7 +38,7 @@ class Header extends Component {
         }
         return(
             <div className='logBar'>
-            <div id='fancyTitle' onClick={this.reset}>APPLICATION BUILDER</div>
+            <div id='fancyTitle' >APPLICATION BUILDER</div>
             <div className='circle'>
             <img className='circle' src='https://i.pinimg.com/236x/71/0c/72/710c72c8b66468a397777fcc90f71c30--serif-logo-logo-m.jpg' alt='Set your information'/>
             </div>

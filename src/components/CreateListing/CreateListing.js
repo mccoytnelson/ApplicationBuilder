@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { uploadData } from '../../ducks/reducer'
-import Question from '../../components/Question/Question'
+import Question from './Question/Question'
 import axios from 'axios';
 import './CreateListing.css'
 
