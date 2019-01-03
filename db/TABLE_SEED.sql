@@ -17,7 +17,8 @@ CREATE TABLE account(
     address VARCHAR(50),
     resume VARCHAR(100),
     portfolio VARCHAR(100),
-    url VARCHAR(200)
+    url VARCHAR(200),
+    timestamp timestamp default  DATE_TRUNC('minute',now())
 );
 create table chat(
     chat_id serial primary key,
@@ -28,7 +29,7 @@ create table message(
 message_id serial primary key,
 chat_id int REFERENCES chat(chat_id),
 message text,
-time timestamp
+timestamp timestamp default now()
 );
 create table listing(
     listing_id serial primary key,
@@ -42,7 +43,7 @@ create table listing(
     salary text,
     description text,
     total_points int,
-    time timestamp
+    timestamp date default DATE_TRUNC('day',now())
 );
 create table question(
     question_id serial primary key,
@@ -60,7 +61,8 @@ create table choice(
 create table completed(
     completed_id serial primary key,
     listing_id INT REFERENCES listing(listing_id),
-    account_id INT REFERENCES account(account_id)
+    account_id INT REFERENCES account(account_id),
+timestamp timestamp default  DATE_TRUNC('minute',now())
 );
 create table answered(
     answered_id serial primary key,
@@ -68,4 +70,22 @@ create table answered(
     question_id INT references question(question_id),
     answer text,
     points int
+);
+insert into company (company_name)values ('The Good Corporation R Us')
+returning company_id;
+insert into account
+(
+    email,hash_value,name,phone_number,address,resume,portfolio,url,company_id
 )
+values
+(
+    'j','$2a$10$6IqE0LmNgtrJFWTUWiolkebcxOz1qtQr/mvGSgW8RkWGbdGXINI5u	','McCoy Nelson','385-505-5766','21 ea 4 south','resumelink','portfoliolink','url',1
+)
+returning *;
+update company
+set company_address = '211 east 400 north',
+company_summary = 'Several elements of the company summary are covered here, including the name (XYZ Consulting), history (new company), description of services (web promotion, SEO, advertising) and why its needed (improve positioning in search engines), and the target market (higher education).',
+company_phone = '231-123-2224',
+logo = 'logo'
+ where company_id = 1
+returning *;

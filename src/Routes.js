@@ -9,6 +9,7 @@ import RenderListing from './components/RenderListing//RenderListing'
 import CompanyListings from './components/CompanyListings/CompanyListings'
 import YourApplications from './components/YourApplications/YourApplications'
 import RenderUserListings from './components/RenderUserListings/RenderUserListings';
+import ListingStatus from './components/CompanyListings/ListingStatus/ListingStatus'
 class Routes extends Component {
     render() {
       return (
@@ -23,6 +24,7 @@ class Routes extends Component {
   <Route path='/listings/apply/:id' component={RenderListing}/>
   <Route path='/applications/:id' component={YourApplications}/>
   <Route path='/completed-application/:id' component={RenderUserListings}/>
+  <Route path='/listing-status/:id' component={ListingStatus}/>
 
         </Switch>
         </div>

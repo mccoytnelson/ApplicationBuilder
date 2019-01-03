@@ -1,27 +1,28 @@
 import React, { Component } from 'react'
-import './AllListings.css'
 import axios from 'axios'
-import ListingSummary from './ListingSummary/ListingSummary'
+import CompanyCompletedListing from './CompletedCompanyListing/CompanyCompletedListing';
 
 
-export default class AllListings extends Component {
+export default class ListingStatus extends Component {
     constructor() {
         super()
         this.state = {
             listings: false,
+            completed: true
         }
     }
-    async componentDidMount() {
-        let res = await axios.get('/retrieve/listings')
+    async componentWillMount() {
+        let res = await axios.get(`/retrieve/company-completed/${this.props.match.params.id}`)
         this.setState({ listings: res.data })
+        console.log(this.state)
     }
     mapListings() {
         let all = [];
-        this.state.listings.map(
+        all = this.state.listings.map(
             (e) => {
-                return all.push(
+                return (
                     <div key={e.listing_id}>
-                    <ListingSummary  listing={e} />
+                    <CompanyCompletedListing listing={e} />
                     </div>
                 )
             }
@@ -29,8 +30,9 @@ export default class AllListings extends Component {
         return all
     }
     render() {
-        let mapped = (<div>Not Connected To DataBase</div>)
+        let mapped = (<div>Repopulate your database</div>)
         if (this.state.listings) {
+            console.log(this.state.listings)
             mapped = this.mapListings()
         } else {
             console.log('repopulate your database')
@@ -38,6 +40,7 @@ export default class AllListings extends Component {
 
         return (
             <div>
+                hi
                 {mapped}
             </div>
         )

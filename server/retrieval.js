@@ -45,11 +45,18 @@ module.exports={
         listing = listing[0]
         res.status(200).send(listing)
     },
+    async getCompanyCompleted(req,res){
+        let {id} = req.params
+        let db = req.app.get('db')
+        let listing = await db.get_company_completed([id])
+        res.status(200).send(listing)
+        console.log('hi')
+    },
     async getAnswered(req,res){
         let {completed_id,question_id} = req.params
         let db = req.app.get('db')
         let answer = await db.get_answered([completed_id,question_id])
         answer = answer[0]
         res.status(200).send(answer)
-    },
+    }
 }

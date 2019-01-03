@@ -2,8 +2,14 @@
     padding-top: 2vh;
 }
 .build{
+    color: white;
+    text-decoration: none;
     width: 77vw;
 min-height: 15vh;
 background-color: gray;
 margin: 1vh;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 300%;
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 // import {Link} from 'react-router-dom'
 import './RenderListing.css'
 import axios from 'axios';
-import AnswerableQuestion from '../AnswerableQuestion/AnswerableQuestion'
+import AnswerableQuestion from './AnswerableQuestion/AnswerableQuestion'
 import {connect} from 'react-redux'
 class RenderListing extends Component {
     constructor() {
@@ -38,7 +38,6 @@ class RenderListing extends Component {
             listingID,accountID        
         });
         this.setState({ upload: res.data})
-        console.log(res.data)
         
     }
     render() {

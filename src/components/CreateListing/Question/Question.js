@@ -15,7 +15,8 @@ class Question extends Component {
             question: '',
             points: 2,
             poppyChain: false,
-            hasRan: false
+            hasRan: false,
+            amountOfUploads: 0
         }
     };
     handleChange = () => {
@@ -26,12 +27,16 @@ class Question extends Component {
     addOne = () => {
         this.setState({ amountOfAnswers: this.state.amountOfAnswers + 1 })
     }
+    addOneToUpload = () => {
+        this.setState({ amountOfUploads: this.state.amountOfUploads + 1 })
+
+    }
     multiRender = (howMany) => {
         let i = 0;
         let toRender = [];
         while (i < howMany) {
             i++
-            toRender.push(<div key={i}><MultipleChoice shouldUpload={this.state.checked} poppyChain={this.state.poppyChain}/></div>)
+            toRender.push(<div key={i}><MultipleChoice addOneToUpload={this.addOneToUpload} shouldUpload={this.state.checked} poppyChain={this.state.poppyChain}/></div>)
         }
         return toRender
     }
@@ -45,6 +50,10 @@ class Question extends Component {
         console.log('posted')
     }
     render() {
+        if(this.state.amountOfAnswers === this.state.amountOfUploads || (this.state.poppyChain && !this.state.checked)){
+            console.log('question logged')
+            this.props.updateUploads()
+        }
         if(this.props.daisyChain && !this.state.hasRan){
             this.uploadQuestion()
            

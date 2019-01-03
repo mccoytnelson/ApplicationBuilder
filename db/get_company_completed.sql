@@ -1,0 +1,1 @@
+select * from completed where listing_id=$1

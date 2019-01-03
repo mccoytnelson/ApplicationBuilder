@@ -20,22 +20,24 @@ export default class YourApplications extends Component {
         this.state.listings.map(
             (e) => {
                 return all.push(
-                    <div key={e.listing_id}>
-                    <RenderCompletedListing listing={e} />
+                    <div key={e.completed_id}>
+                    <RenderCompletedListing deleteListing={this.deleteListing} listing={e} />
                     </div>
                 )
             }
         )
         return all
     }
+    deleteListing= async (id)=>{
+        axios.delete(`/delete/application/${id}`)
+        let res = await axios.get(`/retrieve/applications/${this.props.match.params.id}`)
+        this.setState({ listings: res.data })
+      }
     render() {
-        let mapped = (<div>Repopulate your database</div>)
+        let mapped = (<div>Not Connected To DataBase</div>)
         if (this.state.listings) {
             mapped = this.mapListings()
-        } else {
-            console.log('repopulate your database')
         }
-
         return (
             <div>
                 {mapped}

@@ -6,6 +6,7 @@ const authentication = require('./authentication')
 const edits = require('./edits')
 const uploads = require('./uploads')
 const retrieval = require('./retrieval')
+const remove = require('./remove')
 
 
 const app = express()
@@ -55,4 +56,8 @@ app.get('/retrieve/questions/:id', retrieval.getQuestions)
 app.get('/retrieve/applications/:id', retrieval.getCompleted)
 app.get('/retrieve/answered/:completed_id/:question_id', retrieval.getAnswered)
 app.get('/retrieve/completed/:id', retrieval.getSpecificCompleted)
+app.get('/retrieve/company-completed/:id', retrieval.getCompanyCompleted)
 app.post('/retrieve/multi', retrieval.getMulti)
+
+app.delete('/delete/listing/:id', remove.deleteListing)
+app.delete('/delete/application/:id', remove.deleteApplication)

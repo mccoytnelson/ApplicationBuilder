@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {Redirect} from 'react-router-dom'
 import { uploadData } from '../../ducks/reducer'
 import Question from './Question/Question'
 import axios from 'axios';
@@ -10,17 +11,25 @@ class CreateListing extends Component {
         super(props)
         this.state = {
             amountOfQuestions: 1,
-            daisyChain: false
+            daisyChain: false,
+            totalPoints: 0,
+            amountOfUploads: 0
         }
+    }
+    updateUploads = () => {
+        this.setState({ amountOfUploads: this.state.amountOfUploads + 1 })
     }
     questionRender = (howMany) => {
         let i = 0;
         let toRender = [];
         while (i < howMany) {
             i++
-            toRender.push(<div key={i}><Question ref='triggerDaisy' daisyChain={this.state.daisyChain}/></div>)
+            toRender.push(<div key={i}><Question ref='triggerDaisy' updateUploads={this.updateUploads} addPoints={this.addPoints} daisyChain={this.state.daisyChain}/></div>)
         }
         return toRender
+    }
+    addPoints=(newPoints)=>{
+        this.setState({totalPoints: this.totalPoints + newPoints})
     }
     addOne = () => {
         this.setState({ amountOfQuestions: this.state.amountOfQuestions + 1 })
@@ -32,10 +41,14 @@ class CreateListing extends Component {
             id, companyName, companyAddress, companySummary, companyPhone, position, location, salary, description
         });
         this.setState({daisyChain: res.data.listingID})
-        
     }
     render() {
+        if(this.state.amountOfQuestions === this.state.amountOfUploads){
+            console.log(this.state.amountOfQuestions,this.state.amountOfUploads,'createlisting')
+           return (<Redirect to={`/company/listings/${this.props.id}`} />)
+        }
         let questions = this.questionRender(this.state.amountOfQuestions)
+        console.log('anthing')
         return (
             <div>
                 <div className='createBox'>

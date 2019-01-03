@@ -29,19 +29,16 @@ class AnswerableQuestion extends Component {
         }
     }
     async uploadAnswerableQuestion(data){
-        console.log(this.props.info)
         let completedID = data.completed_id
         let {answer,points} = this.state
         let questionID = this.props.info.question_id
-    let res = await axios.post('/create/answered', {
+        await axios.post('/create/answered', {
         completedID,questionID,answer,points
     })
-    console.log(res)
     this.setState({hasUploaded: true})
     }
     render() {
         let { info,upload } = this.props
-        console.log(upload)
         let {hasUploaded} = this.state
         let input = this.whichInput()
         if(upload !== false && hasUploaded === false){

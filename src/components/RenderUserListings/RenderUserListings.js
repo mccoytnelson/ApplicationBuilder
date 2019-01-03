@@ -26,8 +26,8 @@ class RenderUserListings extends Component {
         this.state.questions.map(
             (e) => {
                 return all.push(
-                    <div key={e.question_id}>
-                    <AnsweredQuestion ids={this.state.ids} info={e} />
+                    <div className='placeholder' key={e.question_id}>
+                    <AnsweredQuestion  ids={this.state.ids} info={e} />
                     </div>
                 )
             }
@@ -38,7 +38,7 @@ class RenderUserListings extends Component {
         let { listing } = this.state
         let mapped = this.mapQuestions()
         return (
-            <div>
+            <div className='center'>
                 <div>Position: {listing.position}</div>
                 <div>Location: {listing.location}</div>
                 <div>Company Name: {listing.company_name}</div>
