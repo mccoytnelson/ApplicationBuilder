@@ -13,11 +13,13 @@ class CreateListing extends Component {
             amountOfQuestions: 1,
             daisyChain: false,
             totalPoints: 0,
-            amountOfUploads: 0
+            amountOfUploads: 0,
+            totalPoints: 0
         }
     }
-    updateUploads = () => {
-        this.setState({ amountOfUploads: this.state.amountOfUploads + 1 })
+    updateUploads = (points) => {
+        this.setState({ amountOfUploads: this.state.amountOfUploads + 1,totalPoints: this.state.totalPoints + points})
+        console.log(this.state.totalPoints)
     }
     questionRender = (howMany) => {
         let i = 0;

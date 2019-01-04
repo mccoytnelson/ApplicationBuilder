@@ -14,15 +14,14 @@ export default class ListingStatus extends Component {
     async componentWillMount() {
         let res = await axios.get(`/retrieve/company-completed/${this.props.match.params.id}`)
         this.setState({ listings: res.data })
-        console.log(this.state)
     }
     mapListings() {
         let all = [];
         all = this.state.listings.map(
             (e) => {
                 return (
-                    <div key={e.listing_id}>
-                    <CompanyCompletedListing listing={e} />
+                    <div key={e.completed_id}>
+                    <CompanyCompletedListing ids={e} />
                     </div>
                 )
             }
@@ -32,7 +31,6 @@ export default class ListingStatus extends Component {
     render() {
         let mapped = (<div>Repopulate your database</div>)
         if (this.state.listings) {
-            console.log(this.state.listings)
             mapped = this.mapListings()
         } else {
             console.log('repopulate your database')
@@ -40,7 +38,6 @@ export default class ListingStatus extends Component {
 
         return (
             <div>
-                hi
                 {mapped}
             </div>
         )

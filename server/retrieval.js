@@ -4,6 +4,12 @@ module.exports={
         let listings = await db.get_all_listings()
         res.status(200).send(listings)
     },
+    async getAccountDetails(req,res){
+        let {id} = req.body
+        let db = req.app.get('db')
+        let account = await db.get_account_details([id])
+        res.status(200).send(account[0])
+    },
     async getSpecificListing(req,res){
         let {id} = req.params
         let db = req.app.get('db')
@@ -50,7 +56,6 @@ module.exports={
         let db = req.app.get('db')
         let listing = await db.get_company_completed([id])
         res.status(200).send(listing)
-        console.log('hi')
     },
     async getAnswered(req,res){
         let {completed_id,question_id} = req.params
@@ -58,5 +63,11 @@ module.exports={
         let answer = await db.get_answered([completed_id,question_id])
         answer = answer[0]
         res.status(200).send(answer)
-    }
+    },
+    async calculatePoints(req,res){
+        let {id} = req.params
+        let db = req.app.get('db')
+        let list = await db.calculate_points([id])
+        res.status(200).send(list)
+    },
 }

@@ -18,11 +18,11 @@ class MultipleChoice extends Component{
             poppyChain,answer,points
         });
         console.log('posted multi')
-        this.props.addOneToUpload()
+        this.props.addOneToUpload(this.state.points)
     }
     render(){
     if(this.props.poppyChain !== false && this.props.shouldUpload){
-        this.uploadMulti()
+        this.uploadMulti(this.state.points)
     }
     return (
             <div>

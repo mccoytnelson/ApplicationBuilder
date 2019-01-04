@@ -8,7 +8,8 @@ class AnswerableQuestion extends Component {
         super()
         this.state={
             upload: false,
-            hasUploaded: false
+            hasUploaded: false,
+            points: 0
         }
     }
     async componentDidMount() {
@@ -18,14 +19,16 @@ class AnswerableQuestion extends Component {
         }
     }
     handleChange = (selectedOption) => {
-        this.setState({ answer: selectedOption.answer });
+        console.log(selectedOption)
+        this.setState({ answer: selectedOption.answer,points: selectedOption.points});
+        console.log(this.state)
       }
     whichInput() {
         let boolean = this.props.info.choice
         if (boolean === 'true') {
             return <Select value={this.state.selectedOption} onChange={this.handleChange} options={this.state.choices}/>
         } else {
-            return <input onChange={(e)=>{this.setState({answer: e.target.value,points: this.props.info.points})}}/>
+            return <input onChange={(e)=>{this.setState({answer: e.target.value, points: 2})}}/>
         }
     }
     async uploadAnswerableQuestion(data){
@@ -48,6 +51,7 @@ class AnswerableQuestion extends Component {
             <div>
                 {info.question}
                 {input}
+                <button onClick={()=>{console.log(this.state)}}>state</button>
                 {/* <button onClick={()=>{console.log(this.state)}}>state</button> */}
             </div>
         )

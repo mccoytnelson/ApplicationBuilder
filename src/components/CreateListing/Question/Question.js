@@ -16,7 +16,8 @@ class Question extends Component {
             points: 2,
             poppyChain: false,
             hasRan: false,
-            amountOfUploads: 0
+            amountOfUploads: 0,
+            highest: 0,
         }
     };
     handleChange = () => {
@@ -27,43 +28,46 @@ class Question extends Component {
     addOne = () => {
         this.setState({ amountOfAnswers: this.state.amountOfAnswers + 1 })
     }
-    addOneToUpload = () => {
+    addOneToUpload = (points) => {
+        if (points > this.state.highest) {
+            this.setState({ highest: points })
+        }
         this.setState({ amountOfUploads: this.state.amountOfUploads + 1 })
-
+        console.log(points)
     }
     multiRender = (howMany) => {
         let i = 0;
         let toRender = [];
         while (i < howMany) {
             i++
-            toRender.push(<div key={i}><MultipleChoice addOneToUpload={this.addOneToUpload} shouldUpload={this.state.checked} poppyChain={this.state.poppyChain}/></div>)
+            toRender.push(<div key={i}><MultipleChoice addOneToUpload={this.addOneToUpload} shouldUpload={this.state.checked} poppyChain={this.state.poppyChain} /></div>)
         }
         return toRender
     }
     async uploadQuestion() {
-        let {daisyChain} = this.props
-        let {  question, checked, points } = this.state
+        let { daisyChain } = this.props
+        let { question, checked, points } = this.state
         let res = await axios.post('/create/question', {
             daisyChain, question, checked, points
         });
-        this.setState({poppyChain: res.data.questionID,hasRan: true});
+        this.setState({ poppyChain: res.data.questionID, hasRan: true });
         console.log('posted')
     }
     render() {
-        if(this.state.amountOfAnswers === this.state.amountOfUploads || (this.state.poppyChain && !this.state.checked)){
+        if (this.state.amountOfAnswers === this.state.amountOfUploads || (this.state.poppyChain && !this.state.checked)) {
             console.log('question logged')
             this.props.updateUploads()
         }
-        if(this.props.daisyChain && !this.state.hasRan){
+        if (this.props.daisyChain && !this.state.hasRan) {
             this.uploadQuestion()
-           
+
         }
         let multi = this.multiRender(this.state.amountOfAnswers)
         const { checked } = this.state
         const hidden = checked ? 'show' : 'hidden';
         return (
             <div className='placeholder'>
-                <input placeholder='Write question here' onChange={(e)=>{this.setState({question:e.target.value})}}/>
+                <input placeholder='Write question here' onChange={(e) => { this.setState({ question: e.target.value }) }} />
                 <div className='textAnswer'>
                     <input type='checkbox' checked={checked} onChange={this.handleChange} />
                     <div>Multiple Choice?</div>
@@ -81,4 +85,4 @@ function mapStateToProps(state) {
         ...state
     }
 }
-export default connect(mapStateToProps,{uploadData})(Question)
+export default connect(mapStateToProps, { uploadData })(Question)

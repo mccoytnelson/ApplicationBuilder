@@ -6,25 +6,30 @@ class CompanyCompletedListing extends Component {
     constructor() {
         super()
         this.state = {
-            listing: {},
-            upload: false
+            account: {}
         }
     }
-    async componentDidMount() {
-        let res = await axios.get(`/retrieve/listing/${this.props.listing.listing_id}`)
-        this.setState({ listing: res.data })
+    async componentWillMount() {
+        let res = await axios.post('/retrieve/account-details', {id: this.props.ids.account_id})
+        // let points = await axios.get(`/retrieve/calculate-points/${this.props.ids.listing_id}`)
+        this.setState({account: res.data })
+        console.log(this.props.ids.account_id,res.data)
+    }
+    calculateMatch(){
+        return 'hi'
     }
    render() {
-        console.log(this.props.listing)
-        let { listing} = this.state
+        let {account} = this.state
         return (
             <div>
-                <div>Position: {listing.position}</div>
-                <div>Location: {listing.location}</div>
-                <div>Company Name: {listing.company_name}</div>
-                <div>Company Summary: {listing.company_summary}</div>
-                <div>Description: {listing.description}</div>
-                <Link to={`/completed-application/${this.props.listing.completed_id}`}><button>See Completed Application</button></Link>
+                no
+                <div>Applicant: {account.name}</div>
+                <div>Applicant: {account.email}</div>
+                <div>Applicant: {account.phone_number}</div>
+                <div>Applicant: {account.address}</div>
+                <div>Applicant: {account.timestamp}</div>
+                <div>Percentage Match: 3</div>
+                <Link to={`/completed-application/${this.props.ids.completed_id}`}><button>See Completed Application</button></Link>
                 <hr />
             </div>
         )
