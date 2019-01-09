@@ -4,18 +4,19 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 // import {Link} from 'react-router-dom'
 class AnswerableQuestion extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state={
             upload: false,
             hasUploaded: false,
-            points: 0
+            points: this.props.info.not_choice_points
         }
     }
     async componentDidMount() {
         if(this.props.info.choice  === 'true'){
         let res = await axios.post(`/retrieve/multi`,{id: this.props.info.question_id})
-        this.setState({ choices: res.data  })
+      console.log(this.props.info.not_choice_points)
+        this.setState({ choices: res.data })
         }
     }
     handleChange = (selectedOption) => {
@@ -51,7 +52,6 @@ class AnswerableQuestion extends Component {
             <div>
                 {info.question}
                 {input}
-                <button onClick={()=>{console.log(this.state)}}>state</button>
                 {/* <button onClick={()=>{console.log(this.state)}}>state</button> */}
             </div>
         )

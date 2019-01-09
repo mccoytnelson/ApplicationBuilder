@@ -1,0 +1,92 @@
+.allListings{
+    display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-height: 89vh;
+  justify-content: center;
+  width: 100%
+}
+.lessThan8{
+    display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-height: 89vh;
+  justify-content: center;
+  width: 100%
+}
+.listingHolder{
+    display: flex;
+    background-color: var(--overcast);
+    width: 45%;
+    margin: 5px;
+    height: 15vh;
+    overflow: hidden;
+    border-radius: 4px;
+    border: solid rgb(85, 85, 85) 1px;
+}
+.fillAppButton{
+ margin-bottom: 2vh;
+height: 8vh;
+width: 8vh;
+border: solid rgb(85, 85, 85) 1px;
+background: var(--comfyGray);
+border-radius: 3px;
+}
+.timeStamp{
+    color: white;
+    margin-top: 5px
+}
+.innerInnerListing{
+    width:80%;
+    margin: 5px
+}
+.innerListing{
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+}
+.listingRightSide{
+    right:1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:20%;
+    height: 100%;
+    }
+.listingDescription{
+    color: white;
+margin-top: 10px;
+/* background:var(--comfyGray); */
+    padding: 5px;
+    border: solid gray 1px;
+    border-radius: 5px;
+    width: 103%;
+    height: 63%;
+    overflow: auto
+}
+.topInfoInner{
+    color: white;
+    /* background: var(--comfyGray);
+    padding: 5px;
+    border: solid gray 1px;
+    border-radius: 5px; */
+    /* margin: 5px; */
+}
+.topInfo{
+    display: flex;
+    justify-content: space-between
+}
+@media (max-width : 1000px) {
+ .allListings{
+     display: flex;
+     flex-direction: column;
+     align-content: center;
+     align-items: center;
+ }
+.listingHolder{
+    width: 95%;
+}
+
+
+   }

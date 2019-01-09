@@ -10,44 +10,46 @@ class Header extends Component {
         let res = await axios.get('/auth/dev');
         this.props.uploadData(res.data);
     }
-
+    pleaseLogin=()=>{
+        alert('Please log in')
+    }
     logOut = async () => {
         await axios.get('/auth/logout');
         this.props.wipeAll();
     };
     render() {
-        let ifUser;
         let ifLogged;
         let ifCompany;
-        let applications
-        let information
+        let ifUser;
+        let ifAccount
+        let ifInformation
         if (this.props.name) {
-            ifUser = (<div className='logBarDiv'><div to='/company/listings' className='button'>Welcome {this.props.name}</div></div>)
+            ifUser = (<div id='welcomeLogBarDiv'><div to='/company/listings' id='welcome'>Welcome {this.props.name}</div></div>)
             ifLogged = (<div className='logBarDiv' ><Link onClick={this.logOut} to='/login' className='button'>Logout</Link></div>)
-            information = (<div className='logBarDiv'><Link to='/information' className='button'>YOUR INFORMATION</Link></div>)
-            applications = (<div className='logBarDiv'><Link to={`/applications/${this.props.id}`} className='button'>YOUR APPLICATIONS</Link></div>)
-
+            ifAccount = (<div className='logBarDiv'><Link to={`/applications/${this.props.id}`} className='button'>Your Applications</Link></div>)
+            ifInformation = (<div className='logBarDiv'><Link to='/information' className='button'>Your Information</Link></div>)
         } else {
             ifLogged = (<div className='logBarDiv'><Link to='/login' className='button'>Login</Link></div>)
-            information = null;
-            applications = null;
+            ifAccount = (<div className='logBarDiv'><Link to={`/`} onClick={this.pleaseLogin} className='button'>Your Applications</Link></div>)
+            ifInformation =(<div className='logBarDiv'><Link to='/' onClick={this.pleaseLogin} className='button'>Your Information</Link></div>)
         }
         if (this.props.companyName) {
-            ifCompany = (<div className='logBarDiv'><Link to={`/company/listings/${this.props.id}`} className='button'>COMPANY LISTINGS</Link></div>)
+            ifCompany = (<div className='logBarDiv'><Link to={`/company/listings/${this.props.id}`} className='button'>Company Listings</Link></div>)
         }
         return (
             <div className='logBar'>
                 <div id='fancyTitle' >APPLICATION BUILDER</div>
-                <div className='circle'>
+                {/* <div className='circle'>
                     <img className='circle' src='https://i.pinimg.com/236x/71/0c/72/710c72c8b66468a397777fcc90f71c30--serif-logo-logo-m.jpg' alt='Set your information' />
-                </div>
+                </div> */}
                 {ifLogged}
-                <div className='logBarDiv'><Link to='/listings' className='button'>ALL LISTINGS</Link></div>
-                {information}
-                {applications}
+                <div className='logBarDiv'><Link to='/listings' className='button'>All Listings</Link></div>
+                {ifAccount}
                 {ifCompany}
+                {ifInformation}
                 {ifUser}
             </div>
+        
         )
     }
 }

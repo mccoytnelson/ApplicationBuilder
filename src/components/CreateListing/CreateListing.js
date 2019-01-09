@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { uploadData } from '../../ducks/reducer'
 import Question from './Question/Question'
 import axios from 'axios';
@@ -14,11 +14,16 @@ class CreateListing extends Component {
             daisyChain: false,
             totalPoints: 0,
             amountOfUploads: 0,
-            totalPoints: 0
         }
     }
+    componentDidMount() {
+        let { companyName, companySummary, companyPhone, companyAddress } = this.props
+        this.setState({
+            companyName: companyName, companySummary: companySummary, companyPhone: companyPhone, companyAddress: companyAddress
+        })
+    }
     updateUploads = (points) => {
-        this.setState({ amountOfUploads: this.state.amountOfUploads + 1,totalPoints: this.state.totalPoints + points})
+        this.setState({ amountOfUploads: this.state.amountOfUploads + 1, totalPoints: this.state.totalPoints + points })
         console.log(this.state.totalPoints)
     }
     questionRender = (howMany) => {
@@ -26,56 +31,72 @@ class CreateListing extends Component {
         let toRender = [];
         while (i < howMany) {
             i++
-            toRender.push(<div key={i}><Question ref='triggerDaisy' updateUploads={this.updateUploads} addPoints={this.addPoints} daisyChain={this.state.daisyChain}/></div>)
+            toRender.push(<div key={i}><Question ref='triggerDaisy' updateUploads={this.updateUploads} addPoints={this.addPoints} daisyChain={this.state.daisyChain} /></div>)
         }
         return toRender
     }
-    addPoints=(newPoints)=>{
-        this.setState({totalPoints: this.totalPoints + newPoints})
+    addPoints = (newPoints) => {
+        this.setState({ totalPoints: this.totalPoints + newPoints })
     }
     addOne = () => {
         this.setState({ amountOfQuestions: this.state.amountOfQuestions + 1 })
     }
     submitApplication = async () => {
-        let { id, companyName, companySummary, companyPhone, companyAddress } = this.props
-        let { position, location, salary, description } = this.state
+        let { id } = this.props
+        let { position, location, salary, description, companyName, companySummary, companyPhone, companyAddress } = this.state
         let res = await axios.post('/create/listing', {
             id, companyName, companyAddress, companySummary, companyPhone, position, location, salary, description
         });
-        this.setState({daisyChain: res.data.listingID})
+        this.setState({ daisyChain: res.data.listingID })
     }
     render() {
-        if(this.state.amountOfQuestions === this.state.amountOfUploads){
-            console.log(this.state.amountOfQuestions,this.state.amountOfUploads,'createlisting')
-           return (<Redirect to={`/company/listings/${this.props.id}`} />)
+        if (this.state.amountOfQuestions === this.state.amountOfUploads) {
+            console.log(this.state.amountOfQuestions, this.state.amountOfUploads, 'createlisting')
+            return (<Redirect to={`/company/listings/${this.props.id}`} />)
         }
         let questions = this.questionRender(this.state.amountOfQuestions)
-        console.log('anthing')
         return (
             <div>
                 <div className='createBox'>
                     <div className='container'>
-                        <div className='innerContainer'>
-                            <div className='infos'>
-                                <div className='info'><input placeholder='postition title' onChange={(e) => { this.setState({ position: e.target.value }) }} /></div>
-                                <div className='info'><input placeholder='location' onChange={(e) => { this.setState({ location: e.target.value }) }} /></div>
-                                <div className='info'><input placeholder='salary' onChange={(e) => { this.setState({ salary: e.target.value }) }} /></div>
+                        <div className='companyInfoContainer'>
+                            <div className='topInfoContainer'>
+                                <p className='createListingP' >CompanyName</p>
+                                <input className='companyInfo' placeholder={'Write company name here...'} value={this.state.companyName} onChange={(e) => { this.setState({ companyName: e.target.value }) }} />
                             </div>
-                            <div className='disc'><input placeholder='job description' onChange={(e) => { this.setState({ description: e.target.value }) }} /></div>
-                            <div>{this.props.companyName}</div>
-                            <div>{this.props.companySummary}</div>
-                            <div>{this.props.companyPhone}</div>
-                            <div>{this.props.companyAddress}</div>
-                            <div></div>
+                            <div className='topInfoContainer'>
+                                <p className='createListingP' >Company Phone</p>
+                                <input className='companyInfo' placeholder={'Write company contact number here...'}value={this.state.companyPhone} onChange={(e) => { this.setState({ companyPhone: e.target.value }) }} />
+                            </div>
+                            <div className='topInfoContainer'>
+                                <p className='createListingP' >Company Address</p>
+                                <input className='companyInfo' placeholder={'Write company address here...'} value={this.state.companyAddress} onChange={(e) => { this.setState({ companyAddress: e.target.value }) }} />
+                            </div>
                         </div>
-                        <div className='logo'>
-                            <img className='logoInner' src='https://i.pinimg.com/236x/71/0c/72/710c72c8b66468a397777fcc90f71c30--serif-logo-logo-m.jpg' alt='Set your information' />
+                        <div className='info'>
+                            <p className='createListingP' >Company Description</p>
+                            <textarea className='textArea' value={this.state.companySummary} onChange={(e) => { this.setState({ companySummary: e.target.value }) }} />
                         </div>
+                        <div className='companyInfoContainer'>
+                            <div className='topInfoContainer'>
+                                <p className='createListingP' >Position Title</p>
+                                <input className='companyInfo' placeholder='postition title' value={this.state.position} onChange={(e) => { this.setState({ position: e.target.value }) }} />                                </div>
+                            <div className='topInfoContainer'>
+                                <p className='createListingP' >Job Location</p>
+                                <input className='companyInfo' placeholder='location' value={this.state.location} onChange={(e) => { this.setState({ location: e.target.value }) }} />                                </div>
+                            <div className='topInfoContainer'>
+                                <p className='createListingP' >Pay Rate and Type</p>
+                                <input className='companyInfo' placeholder='pay rate' value={this.state.salary} onChange={(e) => { this.setState({ salary: e.target.value }) }} />                                </div>
+                        </div>
+                        <div className='info'>
+                            <p className='createListingP'  >Job Description</p>
+                            <textarea className='textArea' value={this.state.description} placeholder='Write detailed job description here...' onChange={(e) => { this.setState({ description: e.target.value }) }} />
+                        </div>
+
                     </div>
                     {questions}
-                    <button onClick={this.addOne}>Add another Question?</button>
-                    <button onClick={this.submitApplication}>Submit Application</button>
-                    <button onClick={()=>{console.log(this.props)}}>props</button>
+                    <button className='createListingButton' onClick={this.addOne}>Add another Question?</button>
+                    <button className='createListingButton' onClick={this.submitApplication}>Submit Application</button>
                 </div>
             </div>
         );
@@ -84,4 +105,4 @@ class CreateListing extends Component {
 function mapStateToProps(state) {
     return { ...state }
 }
-export default connect(mapStateToProps, {uploadData })(CreateListing)
+export default connect(mapStateToProps, { uploadData })(CreateListing)

@@ -1,0 +1,1 @@
+select points from answered where completed_id = $1

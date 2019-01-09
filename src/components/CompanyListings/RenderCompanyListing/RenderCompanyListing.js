@@ -1,33 +1,37 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 import { connect } from 'react-redux'
 class RenderCompanyListing extends Component {
     constructor() {
         super()
         this.state = {
-            listing: {},
+            listing: {timestamp: ''},
             upload: false,
+            
         }
     }
-    async componentWillMount() {
-        let res = await axios.get(`/retrieve/listing/${this.props.listing.listing_id}`)
-        this.setState({ listing: res.data })
+    componentWillMount() {
+        this.setState({ listing: this.props.listing })
     }
     render() {
-        let { listing} = this.state
+        let { listing } = this.props
         return (
-            <div>
-                <div>Position: {listing.position}</div>
-                <div>Location: {listing.location}</div>
-                <div>Company Name: {listing.company_name}</div>
-                <div>Company Summary: {listing.company_summary}</div>
-                <div>Description: {listing.description}</div>
-                <Link to={`/listing-status/${this.props.listing.listing_id}`}><button>Check application status</button></Link>
-                <button onClick={()=>{this.props.deleteListing(this.props.listing.listing_id)}}>Delete Listing</button>
+            <div className='innerListing'>
+                <div className='innerInnerListing'>
+                    <div className='topInfo'>
+                        <div className='topInfoInner'>{listing.position}</div>
+                        <div className='topInfoInner'>{listing.location}</div>
+                        <div className='topInfoInner'>Company: {listing.company_name}</div>
+                    </div>
+                    <div className='listingDescription'>Description: {listing.description}</div>
+                </div>
+                <div className='listingRightSide'>
+                    <div className='timeStamp'>{listing.timestamp.slice(0, 10)}</div>
+                    <Link className='buttonWrap' to={`/listing-status/${this.props.listing.listing_id}`}><button className='completeListingButton'>Check application status</button></Link>
+                    <div className='buttonWrap'><button id='delete' className='completeListingButton' onClick={() => { this.props.deleteListing(this.props.listing.listing_id) }}>Delete Listing</button></div>
 
-                <hr />
-                
+                </div>
             </div>
         )
     }

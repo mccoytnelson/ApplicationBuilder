@@ -50,7 +50,7 @@ create table question(
     listing_id int REFERENCES listing(listing_id),
     question text,
     choice text,
-    not_choice_points text
+    not_choice_points integer
 );
 create table choice(
     choice_id serial primary key,

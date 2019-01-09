@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios';
 import { connect } from 'react-redux'
+import '../YourApplications.css'
+
 class RenderCompletedListing extends Component {
     constructor() {
         super()
@@ -10,22 +12,29 @@ class RenderCompletedListing extends Component {
             upload: false
         }
     }
-    async componentDidMount() {
-        let res = await axios.get(`/retrieve/completed/${this.props.listing.listing_id}`)
+    async componentWillMount() {
+        let res = await axios.get(`/retrieve/listing/${this.props.ids.listing_id}`)
         this.setState({ listing: res.data })
     }
     render() {
-        let { listing} = this.state
+        let { listing} = this.props
+        let {timestamp} = this.props.ids
         return (
-            <div>
-                <div>Position: {listing.position}</div>
-                <div>Location: {listing.location}</div>
-                <div>Company Name: {listing.company_name}</div>
-                <div>Company Summary: {listing.company_summary}</div>
-                <div>Description: {listing.description}</div>
-                <Link to={`/completed-application/${this.props.listing.completed_id}`}><button>See Completed Application</button></Link>
-                <button onClick={()=>{this.props.deleteListing(this.props.listing.completed_id)}}>Delete Listing</button>
-                <hr />
+            <div className='innerListing'> 
+            <div className='innerInnerListing'>
+                <div className='topInfo'> 
+                    <div className='topInfoInner'>{listing.position}</div>
+                    <div className='topInfoInner'>{listing.location}</div>
+                    <div className='topInfoInner'>Company: {listing.company_name}</div>
+                </div>
+                <div className='listingDescription'>Description: {listing.description}</div>
+                </div> 
+                <div className='listingRightSide'>
+                    <div className='timeStamp'>{timestamp.slice(0, 10)}</div>
+                    <Link className='buttonWrap' to={`/completed-application/${this.props.ids.completed_id}`}><button className='completeListingButton'>See Completed Application</button></Link>
+                    <div className='buttonWrap'><button className='completeListingButton' onClick={()=>{this.props.deleteListing(this.props.ids.completed_id)}}>Cancel Application</button></div>
+        
+                </div>
             </div>
         )
     }

@@ -10,11 +10,13 @@ import CompanyListings from './components/CompanyListings/CompanyListings'
 import YourApplications from './components/YourApplications/YourApplications'
 import RenderUserListings from './components/RenderUserListings/RenderUserListings';
 import ListingStatus from './components/CompanyListings/ListingStatus/ListingStatus'
+import './App.css'
 class Routes extends Component {
     render() {
       return (
-        <div>
+        <div className='spacer'>
         <Switch>
+  <Route exact path='/' component={Login}/>
   <Route exact path='/login' component={Login}/>
   <Route exact path='/signup' component={SignUp}/>
   <Route exact path='/create/listing' component={CreateListing}/>

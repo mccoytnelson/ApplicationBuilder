@@ -13,6 +13,7 @@ export default class ListingStatus extends Component {
     }
     async componentWillMount() {
         let res = await axios.get(`/retrieve/company-completed/${this.props.match.params.id}`)
+        console.log(res.data)
         this.setState({ listings: res.data })
     }
     mapListings() {
@@ -21,7 +22,7 @@ export default class ListingStatus extends Component {
             (e) => {
                 return (
                     <div key={e.completed_id}>
-                    <CompanyCompletedListing ids={e} />
+                    <CompanyCompletedListing points={e.sum} ids={e} />
                     </div>
                 )
             }
@@ -38,6 +39,11 @@ export default class ListingStatus extends Component {
 
         return (
             <div>
+                <button onClick>Alphabetize</button>
+                <button onClick>Date</button>
+                <button>Percentage Match</button>
+                <p>Custom Search</p>
+                <input onChange /><button>Search</button>
                 {mapped}
             </div>
         )

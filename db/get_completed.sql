@@ -1,1 +1,3 @@
-select * from completed where account_id=$1
+SELECT *
+    FROM completed INNER JOIN listing ON (completed.listing_id = listing.listing_id)
+where completed.account_id = 1

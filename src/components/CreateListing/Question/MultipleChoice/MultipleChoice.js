@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
 import { connect } from 'react-redux';
 import axios from 'axios'
-
+import {uploadData} from '../../../../ducks/reducer'
 
 class MultipleChoice extends Component{
     constructor(){
@@ -29,7 +29,6 @@ class MultipleChoice extends Component{
                 <div className='textAnswer'>
                     <input placeholder='answer' onChange={(e)=>{this.setState({answer:e.target.value})}}/>
                     <input className='multipleChoice' placeholder='Points?' onChange={(e)=>{this.setState({points:e.target.value})}}/>
-                    <input type='checkbox' /><div>AutoFail?</div>
                 </div>
             </div>
     )
@@ -42,4 +41,4 @@ function mapStateToProps(state) {
         ...state
     }
 }
-export default connect(mapStateToProps)(MultipleChoice)
+export default connect(mapStateToProps,{uploadData})(MultipleChoice)

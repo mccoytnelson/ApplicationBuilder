@@ -1,1 +1,1 @@
-select * from question inner join choice on choice.question_id = question.question_id where listing_id = $1;
+select SUM(cast(not_choice_points as int)) from question where listing_id=83;

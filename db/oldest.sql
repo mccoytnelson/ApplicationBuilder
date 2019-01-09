@@ -1,0 +1,1 @@
+select * from listing order by timestamp desc;

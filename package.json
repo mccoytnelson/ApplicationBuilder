@@ -16,7 +16,8 @@
     "react-scripts": "2.1.1",
     "react-select": "^2.0.0-beta.7",
     "redux": "^4.0.1",
-    "redux-devtools-extension": "^2.13.7"
+    "redux-devtools-extension": "^2.13.7",
+    "reload": "^2.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

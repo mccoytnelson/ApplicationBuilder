@@ -26,23 +26,29 @@ class Login extends Component {
   }
   render() {
     const {checked} = this.state
-    const hidden = this.state.checked ? '' : 'hidden';
+    const hidden = this.state.checked ? 'notHidden' : 'hidden';
     return (
-      <div>
+      <>
         <h2>
             Register for Application Builder
         </h2>
+        <div>
+        <p>If you plan on uploading applications you need to register with a company account</p>
+        <p>Company Account: <input type='checkbox' className='checkbox' checked={checked} onChange={this.handleChange}/></p>
+        </div>
+      <div className='signup'>
+        <div>
         <p>Email: <input onChange={(e) => { this.setState({ email: e.target.value }) }} type="text" /></p>
         <p>Password:<input onChange={(e) => { this.setState({ password: e.target.value }) }} type="password" /></p>
-        <hr/>
         <p>Name:<input onChange={(e) => { this.setState({ name: e.target.value }) }} type="text" /></p>
         <p>Phone Number:<input onChange={(e) => { this.setState({ phone: e.target.value }) }} type="text" /></p>
         <p>Address:<input onChange={(e) => { this.setState({ address: e.target.value }) }} type="text" /></p>
         <p>Resume Link:<input onChange={(e) => { this.setState({ resume: e.target.value }) }} type="text" /></p>
         <p>Portfolio Link:<input onChange={(e) => { this.setState({ portfolio: e.target.value }) }} type="text" /></p>
         <p>Account Picture URL:<input onChange={(e) => { this.setState({ url: e.target.value }) }} type="text" /></p>
-        <p>If you plan on uploading applications you need to register with a company account</p>
-        <p>Company Account: <input type='checkbox' checked={checked} onChange={this.handleChange}/></p>
+        
+        </div>
+        <div>
         <div className={hidden}>
         <p>Company Name:<input onChange={(e) => { this.setState({ companyName: e.target.value }) }} type="text" /></p>
         <p>Company Summary:<input onChange={(e) => { this.setState({ summary: e.target.value }) }} type="text" /></p>
@@ -50,10 +56,14 @@ class Login extends Component {
         <p>Company Phone Number:<input onChange={(e) => { this.setState({ companyPhone: e.target.value }) }} type="text" /></p>
         <p>Company Logo URL:<input onChange={(e) => { this.setState({ companyUrl: e.target.value }) }} type="text" /></p>
         </div>
-       <Link to='/'> <button onClick={this.signUp}>Signup</button></Link>
-       <Link to='/'> <button>Cancel</button></Link>
+        </div>
         {/* <button onClick={()=>{console.log(this.state)}}>log State</button> */}
       </div>
+      <div className='signupButtons'>
+       <Link to='/'> <button className='signupButton'>Cancel</button></Link>
+       <Link to='/'> <button className='signupButton'onClick={this.signUp}>Signup</button></Link>
+       </div>
+      </>
     );
   }
 }

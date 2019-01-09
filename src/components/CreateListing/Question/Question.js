@@ -68,13 +68,14 @@ class Question extends Component {
         return (
             <div className='placeholder'>
                 <input placeholder='Write question here' onChange={(e) => { this.setState({ question: e.target.value }) }} />
+                <input placeholder='total points?' onChange={(e) => { this.setState({ points: e.target.value }) }}/>
                 <div className='textAnswer'>
                     <input type='checkbox' checked={checked} onChange={this.handleChange} />
                     <div>Multiple Choice?</div>
                 </div>
                 <div className={hidden}>
                     {multi}
-                    <button onClick={this.addOne}>Add another answer?</button>
+                    <button className='createListingButton' onClick={this.addOne}>Add another answer?</button>
                 </div>
             </div>
         )

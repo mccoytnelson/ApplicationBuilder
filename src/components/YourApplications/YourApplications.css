@@ -1,0 +1,24 @@
+.completeListingButton{
+    margin: 1%;
+    height: 100%;
+    width: 60%;
+    background: var(--comfyGray);
+    box-shadow: none;
+    border: solid 1px black;
+    border-radius: 3px;
+    text-decoration: none;
+    color: black;
+    font-size:100%;
+  }
+  .completeListingButton:hover{
+    background-color: rgb(236, 236, 236);
+    cursor: pointer
+  }
+  .buttonWrap{
+      height: 38%;
+      width:100%;
+      margin-bottom: 3px;
+  }
+  #delete:hover{
+      background: rgb(255, 182, 182)
+  }

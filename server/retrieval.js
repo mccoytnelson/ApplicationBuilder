@@ -70,4 +70,10 @@ module.exports={
         let list = await db.calculate_points([id])
         res.status(200).send(list)
     },
+    async calculateScore(req,res){
+        let {id} = req.params
+        let db = req.app.get('db')
+        let list = await db.calculate_score([id])
+        res.status(200).send(list)
+    },
 }
