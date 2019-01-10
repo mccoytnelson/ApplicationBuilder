@@ -8,9 +8,9 @@ class Listing extends Component {
             <div className='innerListing'> 
             <div className='innerInnerListing'>
                 <div className='topInfo'> 
-                    <div className='topInfoInner'>{listing.position}</div>
-                    <div className='topInfoInner'>{listing.location}</div>
                     <div className='topInfoInner'>{listing.company_name}</div>
+                    <div className='topInfoInner'>{listing.location}</div>
+                    <div className='topInfoInner'>{listing.position}</div>
                 </div>
                 <div className='listingDescription'>Description: {listing.description}</div>
                 </div>

@@ -10,6 +10,8 @@ const remove = require('./remove')
 const sort = require('./sort')
 
 const app = express()
+
+
 app.use(express.json())
 
 let { SERVER_PORT, SECRET, CONNECTION_STRING,DEV } = process.env
@@ -88,3 +90,4 @@ app.get('/retrieve/dealphabatize-user-listings/:id', sort.userDeAlphabatize)
 app.get('/retrieve/oldest-user-listings/:id', sort.userNewest)
 app.get('/retrieve/newest-user-listings/:id', sort.userOldest)
 app.post('/retrieve/custom-search-user-listings/:id', sort.userCustomSearch)
+
