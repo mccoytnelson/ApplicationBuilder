@@ -32,7 +32,7 @@ class Login extends Component {
           <p className='loginText'>Email</p>
           <input placeholder='Email...' onChange={(e) => { this.setState({ email: e.target.value }) }} type="text" />
           <p className='loginText'>Password</p>
-          <input placeholder='Password...' onChange={(e) => { this.setState({ password: e.target.value }) }} type="text" />
+          <input placeholder='Password...' onChange={(e) => { this.setState({ password: e.target.value }) }} type="password" />
           <div></div>
           <Link className='login' to='/'><button className='loginButton' onClick={this.login}>Login</button></Link>
           <p className='newUser'>New User? <Link to='/signup'><button className='loginButton'>Signup</button></Link></p>

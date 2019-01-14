@@ -37,7 +37,7 @@ class Login extends Component {
         <p>Company Account: <input type='checkbox' className='checkbox' checked={checked} onChange={this.handleChange}/></p>
         </div>
       <div className='signup'>
-        <div>
+        <div className='signupPhone'>
         <p>Email: <input onChange={(e) => { this.setState({ email: e.target.value }) }} type="text" /></p>
         <p>Password:<input onChange={(e) => { this.setState({ password: e.target.value }) }} type="password" /></p>
         <p>Name:<input onChange={(e) => { this.setState({ name: e.target.value }) }} type="text" /></p>
