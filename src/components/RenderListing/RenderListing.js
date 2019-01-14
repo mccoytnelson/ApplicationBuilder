@@ -16,7 +16,7 @@ class RenderListing extends Component {
         }
     }
     async componentDidMount() {
-        let res = await axios.get(`/retrieve/listing/${this.props.match.params.id}`)
+        // let res = await axios.get(`/retrieve/listing/${this.props.match.params.id}`)
         let res2 = await axios.get(`/retrieve/questions/${this.props.match.params.id}`)
 
         this.setState({ listing: res2.data[0], questions: res2.data,amount:res2.data.length})

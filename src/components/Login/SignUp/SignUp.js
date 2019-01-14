@@ -25,6 +25,7 @@ class Login extends Component {
     })
   }
   render() {
+    // console.log(this.props.match)
     const {checked} = this.state
     const hidden = this.state.checked ? 'notHidden' : 'hidden';
     return (

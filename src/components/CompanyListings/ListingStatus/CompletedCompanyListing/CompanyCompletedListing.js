@@ -57,17 +57,6 @@ class CompanyCompletedListing extends Component {
         }
     }
 }
-{/* <div className='innerInnerListing'>
-                <div className='colorDot' id={colorChange}></div>
-                <div>Applicant: {ids.name}</div>
-                <div>Email: {ids.email}</div>
-                <div>Phone Number: {ids.phone_number}</div>
-                <div>Address: {ids.address}</div>
-                <div>Applied: {ids.timestamp.slice(0, 10)}</div>
-                <div>Percentage Match: {this.state.match}%</div>
-                <Link to={`/completed-application/${this.props.ids.completed_id}`}><button>See Completed Application</button></Link>
-                <hr />
-            </div> */}
 function mapStateToProps(state) {
     return { ...state }
 }

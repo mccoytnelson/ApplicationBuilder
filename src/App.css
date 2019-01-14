@@ -57,6 +57,9 @@
 .searchInputButton{
   margin-left: 0;
 }
+#on{
+background: var(--hover);
+}
 .searchButton{
   margin: 1%;
   height: 100%;

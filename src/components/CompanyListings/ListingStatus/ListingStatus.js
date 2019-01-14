@@ -33,9 +33,9 @@ export default class ListingStatus extends Component {
             )
             return all
         }
-    sortByMatch(arr){
-        arr.sort((a,b)=>{})
-    }
+    // sortByMatch(arr){
+    //     arr.sort((a,b)=>{})
+    // }
         render() {
             if(this.state.amount === this.state.tick){
                 console.log('run')
