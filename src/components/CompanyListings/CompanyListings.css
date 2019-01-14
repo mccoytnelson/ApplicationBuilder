@@ -80,7 +80,6 @@ border-radius: 3px;
 }
 #red{
 background: red;
-width: 25%;
 }
 #green{
     background: green;
@@ -88,5 +87,7 @@ width: 25%;
 }
 #yellow{
     background: yellow;
-    width: 50%
+}
+#brightGreen{
+    background: rgb(0, 243, 0)
 }

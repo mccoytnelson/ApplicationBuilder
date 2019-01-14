@@ -6,21 +6,25 @@ class CompanyCompletedListing extends Component {
     constructor() {
         super()
         this.state = {
-            ids: { timestamp: '' },
             points: {},
             match: 0,
+            account: { timestamp: '' }
 
         }
     }
     async componentDidMount() {
         let { points } = this.props
         let score = await axios.get(`/retrieve/calculate-score/${this.props.ids.completed_id}`)
-        this.setState({ match: Math.round((score.data[0].total / points) * 100) });
+        let account = await axios.post(`/retrieve/account-details`,{id:this.props.ids.account_id})
+        this.setState({account:account.data, match: Math.round((score.data[0].total / points) * 100) });
         this.props.tick()
     }
     render() {
         let colorChange = 'red'
-        if (this.state.match > 80) {
+        if (this.state.match > 100) {
+            colorChange = 'brightGreen'
+        }
+        else if (this.state.match > 80) {
             colorChange = 'green'
         } else if (this.state.match > 50) {
             colorChange = 'yellow'
@@ -29,26 +33,27 @@ class CompanyCompletedListing extends Component {
         }
         let { ids } = this.props
         console.log('info i need', ids)
-        if (!this.props.ids) {return  <div>loading</div> }
+        let {account} = this.state
+        if (!this.props.ids) { return <div>loading</div> }
         else {
             return (
                 <div className='innerListing'>
                     <div className='innerInnerListing'>
                         <div className='topInfo'>
-                            <div id='topInfoCompany'>{ids.name}</div>
+                            <div id='topInfoCompany'>{account.name}</div>
                             <div className='colorDot' id={colorChange}>Percentage Match: {this.state.match}%</div>
 
                         </div>
                         <div id='positionPos'>
-                            <div id='topInfoPosition'>{ids.email}</div>
+                            <div id='topInfoPosition'>{account.email}</div>
                         </div>
                         <div className='leftAlign' >
-                            <div>   Address: {ids.address}</div>
-                            <div>   Phone Number: {ids.phone_number}</div>
+                            <div>   Address: {account.address}</div>
+                            <div>   Phone Number: {account.phone_number}</div>
                         </div>
                     </div>
                     <div className='listingRightSide'>
-                        <div className='timeStamp'>{ids.timestamp.slice(0, 10)}</div>
+                        <div className='timeStamp'>{account.timestamp.slice(0, 10)}</div>
                         <Link className='applyHolder' to={`/completed-application/${this.props.ids.completed_id}`}><button id='completeListingButton'>Review Application</button></Link>
                     </div>
                 </div>
