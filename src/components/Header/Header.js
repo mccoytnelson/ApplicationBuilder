@@ -23,6 +23,7 @@ class Header extends Component {
         let {pathname} = this.props.location
         let ifLogged, ifCompany, ifUser, ifAccount, ifInformation,hovLogged,hovYourApp,hovInfo,hovCompany,hovAll
         if(pathname == '/login'){hovLogged = 'on';}
+        else if(pathname === '/'){hovLogged = 'on'}
         else if(pathname.includes('/information')){hovInfo = 'on'}
         else if(pathname.includes( `/company` || '/create')){hovCompany = 'on'}
         else if (pathname.includes('/create')){{hovCompany = 'on'}}
