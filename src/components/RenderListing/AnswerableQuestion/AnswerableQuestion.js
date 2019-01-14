@@ -27,7 +27,7 @@ class AnswerableQuestion extends Component {
         if (boolean === 'true') {
             return <Select className='select' classNamePrefix='select' value={this.state.selectedOption} onChange={this.handleChange} options={this.state.choices}/>
         } else {
-            return <textarea className='applicationTextArea' onChange={(e)=>{this.setState({answer: e.target.value, points: this.props.not_choice_points})}}/>
+            return <textarea className='applicationTextArea' onChange={(e)=>{this.setState({answer: e.target.value, points: this.props.info.not_choice_points})}}/>
         }
     }
     async uploadAnswerableQuestion(data){
