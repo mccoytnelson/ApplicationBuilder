@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 // import {Link} from 'react-router-dom'
 import './RenderListing.css'
 import axios from 'axios';
+import {Redirect} from 'react-router-dom'
 import AnswerableQuestion from './AnswerableQuestion/AnswerableQuestion'
 import { connect } from 'react-redux'
 class RenderListing extends Component {
@@ -9,25 +10,31 @@ class RenderListing extends Component {
         super()
         this.state = {
             listing: { timestamp: [] },
-            upload: false
+            upload: false,
+            amount:false,
+            uploads: 0
         }
     }
     async componentDidMount() {
         let res = await axios.get(`/retrieve/listing/${this.props.match.params.id}`)
         let res2 = await axios.get(`/retrieve/questions/${this.props.match.params.id}`)
-        this.setState({ listing: res2.data[0], questions: res2.data})
+
+        this.setState({ listing: res2.data[0], questions: res2.data,amount:res2.data.length})
     }
     questionRender = (value) => {
         if (value) {
             let render
             render = value.map(e => {
                 return (
-                    <AnswerableQuestion key={e.question_id} upload={this.state.upload} info={e} />
+                    <AnswerableQuestion addOne={this.addOne} key={e.question_id} upload={this.state.upload} info={e} />
                 )
             })
 
             return render
         }
+    }
+    addOne= ()=>{
+        this.setState({uploads: this.state.uploads + 1})
     }
     submitApplication = async () => {
         let accountID = this.props.id
@@ -35,10 +42,15 @@ class RenderListing extends Component {
         let res = await axios.post('/create/application', {
             listingID, accountID
         });
-        this.setState({ upload: res.data })
-
+        await this.setState({ upload: res.data })
+      
     }
     render() {
+        console.log(this.state.uploads)
+        if(this.state.amount === this.state.uploads){
+            alert('Thank you, your application has submitted')
+           return <Redirect to={`/applications/${this.props.id}`}/>
+        }
         let { listing, questions } = this.state
         let renderableQuestions = this.questionRender(questions)
         return (

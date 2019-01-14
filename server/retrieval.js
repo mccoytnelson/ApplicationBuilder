@@ -42,6 +42,7 @@ module.exports={
         let {id} = req.params
         let db = req.app.get('db')
         let listings = await db.get_completed([id])
+        console.log(listings)
         res.status(200).send(listings)
     },
     async getSpecificCompleted(req,res){

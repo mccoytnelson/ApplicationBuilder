@@ -27,8 +27,8 @@ class MultipleChoice extends Component{
     return (
             <div>
                 <div className='textAnswer'>
-                    <input placeholder='answer' onChange={(e)=>{this.setState({answer:e.target.value})}}/>
-                    <input className='multipleChoice' placeholder='Points?' onChange={(e)=>{this.setState({points:e.target.value})}}/>
+                    <textarea className='multiAnswer'placeholder='answer' onChange={(e)=>{this.setState({answer:e.target.value})}}/>
+                    <input className='multipleChoice' placeholder='points?' onChange={(e)=>{this.setState({points:e.target.value})}}/>
                 </div>
             </div>
     )

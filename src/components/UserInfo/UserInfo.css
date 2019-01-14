@@ -1,7 +1,49 @@
-.userInformation{
+.userInfo{
 width: 100%;
+text-align: left;
+font-size: 16px;
+background: white;
+border-radius: 4px;
+margin: 2vh;
+box-shadow: 1px 1px 7px -2px black,-1px -1px 7px -2px rgb(39, 39, 39);
 }
 .userInfoTitle{
+    padding-top: 20px;
+    padding-left: 20px;
     width: 100%;
-    height: 10vh;
+    height: 5vh;
+    font-size: 20px;
+    font-weight: bolder;
+}
+.userInfo{
+    display: flex;
+    flex-flow: column;
+
+}
+.R{
+    display: flex;
+    margin: 1vh;
+}
+.chr{
+    width: 60%;
+    margin: 15px;
+}
+.hrl{
+    display: flex;
+}
+.infoButton{
+    /* position: relative; */
+    bottom: 10px;
+    color: white;
+ /* margin-bottom: 2vh; */
+height: 4vh;
+width: 10vw;
+border: solid rgb(85, 85, 85) 1px;
+background: var(--overcast);
+border-radius: 3px;
+margin: 5px;
+}
+.infoButton:hover{
+    cursor: pointer;
+    background: var(--hover)
 }

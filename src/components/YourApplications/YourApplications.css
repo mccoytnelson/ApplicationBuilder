@@ -20,7 +20,8 @@
       margin-top: 5px;
   }
   #delete:hover{
-      background: rgb(255, 182, 182)
+    cursor: pointer;
+    background: var(--hover)
   }
   .listingRightSideYours{
       /* position: relative; */
@@ -38,6 +39,10 @@ width: 6vw;
 border: solid rgb(85, 85, 85) 1px;
 background: var(--overcast);
 border-radius: 3px;
+}
+.fillAppButtonYours:hover{
+    cursor: pointer;
+    background: var(--hover)
 }
 /* .yoursButtons{
     position: relative;

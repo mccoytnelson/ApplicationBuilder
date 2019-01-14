@@ -38,6 +38,7 @@ class AnswerableQuestion extends Component {
         completedID,questionID,answer,points
     })
     this.setState({hasUploaded: true})
+    this.props.addOne()
     }
     render() {
         let { info,upload } = this.props

@@ -37,6 +37,12 @@ align-items: center;
     border-radius: 3px;
   }
   .loginButton:hover{
-    background-color: rgb(236, 236, 236);
+    background-color: var(--hover);
     cursor: pointer
   }
+  @media (max-width : 500px) {
+.loginButton{
+    width: 80vw;
+    height: 5vh;
+}
+}

@@ -16,6 +16,7 @@ display: flex;
 }
 .listingHolder{
     position: relative;
+    max-height: 15vh;
     display: flex;
     background-color: var(--backgrounds);
     width: 45%;
@@ -28,7 +29,7 @@ display: flex;
     /* border: solid rgb(85, 85, 85) 1px; */
 }
 .fillAppButton{
-    position: relative;
+    /* position: relative; */
     bottom: 10px;
     color: white;
  /* margin-bottom: 2vh; */
@@ -43,7 +44,7 @@ border-radius: 3px;
     background: var(--hover)
 }
 .applyHolder{
-    position: relative;
+    /* position: relative; */
     /* display: flex; */
 }
 .applyHolder:hover{
@@ -107,6 +108,7 @@ margin-top: 10px;
     display: flex;
     justify-content: left;
     position: relative;
+    justify-content: space-between
 }
 .topInfo{
     position: relative;
@@ -126,3 +128,117 @@ margin-top: 10px;
 
 
    }
+   @media (max-width : 500px) {
+    .allListings{
+    display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-height: 89vh;
+  justify-content: center;
+  width: 100%
+}
+.lessThan8{
+display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-height: 89vh;
+  justify-content: center;
+  width: 100%
+}
+.listingHolder{
+    position: relative;
+    display: flex;
+    min-height: 15vh;
+    max-height: 40vh;
+    background-color: var(--backgrounds);
+    width: 96%;
+    margin: 5px;
+    padding: 5px;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 1px 1px 7px -2px black,-1px -1px 7px -2px rgb(39, 39, 39);
+    /* border: solid rgb(85, 85, 85) 1px; */
+}
+.fillAppButton{
+    position: relative;
+    color: white;
+ /* margin-bottom: 2vh; */
+ top: 20px;
+height: 60px;
+width: 95%;
+border: solid rgb(85, 85, 85) 1px;
+background: var(--overcast);
+border-radius: 3px;
+}
+.fillAppButton:hover{
+    cursor: pointer;
+    background: var(--hover)
+}
+.applyHolder:hover{
+    cursor: default;
+}
+.timeStamp{
+    font-size: 14px;
+    color: black;
+    margin-top: 5px
+}
+.innerInnerListing{
+    position: relative;
+    width:80%;
+    margin: 5px;
+    height: 100%;
+}
+.innerListing{
+    width: 100%;
+    display: flex;
+
+}
+.listingRightSide{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:20%;
+    height: max-content;
+    }
+.listingDescription{
+    font-size: 12px;
+    text-align: left;
+    color: black;
+margin-top: 10px;
+/* background:var(--comfyGray); */
+    padding: 5px;
+    border-top: solid gray 1px;
+    width: 100%;
+    height: 60%;
+    overflow: auto;
+ margin-bottom: 1vh;
+}
+#topInfoCompany{
+    font-size: 18px;
+        font-weight: bolder;
+
+}
+#topInfoLocation{
+    font-size: 13px;
+    position: relative;
+    right: 20%;
+}
+#topInfoPosition{
+    position: relative;
+    font-size: 14px;
+    left: 10px;
+    font-weight: bold
+}
+#positionPos{
+    display: flex;
+    justify-content: left;
+    position: relative;
+    justify-content: space-between
+}
+.topInfo{
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between
+}
+}

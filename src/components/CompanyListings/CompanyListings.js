@@ -68,7 +68,7 @@ class CompanyListings extends Component {
         }
         return (
             <>
-                <Link className='build' to='/create/listing'>Create New Listing</Link>
+                <Link className='build' to='/create/listing'>Click Here Create New Listing</Link>
                 <div className='searchBar'>
                     <button className='searchButton' id='searchInputButton' onClick={this.customInput}>Search</button>
                     <input className='searchInput' placeholder='Search...' onChange={(e)=>this.setState({search:e.target.value })} />

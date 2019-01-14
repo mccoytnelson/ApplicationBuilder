@@ -38,31 +38,32 @@ class UserInfo extends Component {
             let companyTrue
             if (this.props.companyName) {
                 companyTrue = (<div>
-                    <div>Company Name: {this.props.companyName}</div>
-                    <div>Company Summary: {this.props.companySummary}</div>
-                    <div>Company Address: {this.props.companyAddress}</div>
-                    <div>Company Phone Number: {this.props.companyPhone}</div>
-                    <div>Company Logo URL: {this.props.logo}</div>
+                    <div className='R'>Company Name: {this.props.companyName}</div>
+                    <div className='R'>  Company Summary: {this.props.companySummary}</div>
+                    <div className='R'>Company Address: {this.props.companyAddress}</div>
+                    <div className='R'>Company Phone Number: {this.props.companyPhone}</div>
+                    <div className='R'>Company Logo URL: {this.props.logo}</div>
                 </div>)
             } else {
                 companyTrue = (<div>Standard Account</div>)
             }
             return (
-                <div className='userInformation'>
-                    <div className='userInfoTitle'>Your Information</div>
-                    <div>
-                        <div>Name: {this.props.name}</div>
-                        <div>Email: {this.props.email}</div>
-                        <div>Address: {this.props.address}</div>
-                        <div>Phone Number: {this.props.phoneNumber}</div>
-                        <div>Resume Link: {this.props.resume}</div>
-                        <div>Portfolio Link: {this.props.portfolio}</div>
-                        <div>Profile Picture Link: {this.props.url}</div>
-                        {companyTrue}
-                        <button onClick={this.toggleEdit}>Edit Information</button>
+                <>
+                    <div className='userInfo'>
+                        <div className='userInfoTitle'>Your Information</div>
+                        <div>
+                            <div className='R'>Name: {this.props.name}</div>
+                            <div className='R'>Email: {this.props.email}</div>
+                            <div className='R'>Address: {this.props.address}</div>
+                            <div className='R'>Phone Number: {this.props.phoneNumber}</div>
+                            <div className='R'>Resume Link: {this.props.resume}</div>
+                            <div className='R'>Portfolio Link: {this.props.portfolio}</div>
+                            <div className='R'>Profile Picture Link: {this.props.url}</div>
+                            {companyTrue}
+                        </div>
                     </div>
-                </div>
-
+                    <button className='infoButton' onClick={this.toggleEdit}>Edit Information</button>
+                </>
 
             )
 
@@ -70,29 +71,47 @@ class UserInfo extends Component {
             let companyTrue
             if (this.props.companyName) {
                 companyTrue = (<div>
-                    <div>Company Name: {this.props.companyName}</div><input onChange={(e) => { this.setState({ companyName: e.target.value }) }} />
-                    <div>Company Summary: {this.props.companySummary}</div><input onChange={(e) => { this.setState({ companySummary: e.target.value }) }} />
-                    <div>Company Address: {this.props.companyAddress}</div><input onChange={(e) => { this.setState({ companyAddress: e.target.value }) }} />
-                    <div>Company Phone Number: {this.props.companyPhone}</div><input onChange={(e) => { this.setState({ companyPhone: e.target.value }) }} />
-                    <div>Company Logo URL: {this.props.logo}</div><input onChange={(e) => { this.setState({ logo: e.target.value }) }} />
+                    <div className='R'>Company Name: {this.props.companyName}</div>
+                    <input  className='chr'onChange={(e) => { this.setState({ companyName: e.target.value }) }} />
+                    <div className='R'>Company Summary: {this.props.companySummary}</div>
+                    <textarea  className='chr'onChange={(e) => { this.setState({ companySummary: e.target.value }) }} />
+                    <div className='R'>Company Address: {this.props.companyAddress}</div>
+                    <input className='chr' onChange={(e) => { this.setState({ companyAddress: e.target.value }) }} />
+                    <div className='R'>Company Phone Number: {this.props.companyPhone}</div>
+                    <input  className='chr'onChange={(e) => { this.setState({ companyPhone: e.target.value }) }} />
+                    <div className='R'>Company Logo URL: {this.props.logo}</div>
+                    <input  className='chr'onChange={(e) => { this.setState({ logo: e.target.value }) }} />
                 </div>)
             } else {
                 companyTrue = (<div>Standard Account</div>)
             }
             return (
-                <div>
-                    <div>User Information</div>
-                    <div>Name: {this.props.name}</div><input onChange={(e) => { this.setState({ name: e.target.value }) }} />
-                    <div>Email: {this.props.email}</div><input onChange={(e) => { this.setState({ email: e.target.value }) }} />
-                    <div>Address: {this.props.address}</div><input onChange={(e) => { this.setState({ address: e.target.value }) }} />
-                    <div>Phone Number: {this.props.phoneNumber}</div><input onChange={(e) => { this.setState({ phoneNumber: e.target.value }) }} />
-                    <div>Resume Link: {this.props.resume}</div><input onChange={(e) => { this.setState({ resume: e.target.value }) }} />
-                    <div>Portfolio Link: {this.props.portfolio}</div><input onChange={(e) => { this.setState({ portfolio: e.target.value }) }} />
-                    <div>Profile Picture Link: {this.props.url}</div><input onChange={(e) => { this.setState({ url: e.target.value }) }} />
-                    {companyTrue}
-                    <button onClick={this.submitEdit}>Submit Changes</button><button onClick={this.toggleEdit}>Cancel</button>
-                </div>
+                <>
+                    <div className='userInfo'>
+                        <div className='userInfoTitle'>Your Information</div>
+                        <div>
+                            <div className='R'>Name: {this.props.name}</div>
 
+                            <div className='R'>Email: {this.props.email}</div>
+                            <input   className='chr'onChange={(e) => { this.setState({ email: e.target.value }) }} />
+                            <div className='R'>Address: {this.props.address}</div>
+                            <input  className='chr'onChange={(e) => { this.setState({ address: e.target.value }) }} />
+                            <div className='R'>Phone Number: {this.props.phoneNumber}</div>
+                            <input className='chr' onChange={(e) => { this.setState({ phoneNumber: e.target.value }) }} />
+                            <div className='R'>Resume Link: {this.props.resume}</div>
+                            <input className='chr' onChange={(e) => { this.setState({ resume: e.target.value }) }} />
+                            <div className='R'>Portfolio Link: {this.props.portfolio}</div>
+                            <input className='chr' onChange={(e) => { this.setState({ portfolio: e.target.value }) }} />
+                            <div className='R'>Profile Picture Link: {this.props.url}</div>
+                            <input  className='chr'onChange={(e) => { this.setState({ url: e.target.value }) }} />
+                            {companyTrue}
+                        </div>
+                    </div>
+                    <div className='hrl'>
+                    <button className='infoButton' onClick={this.submitEdit}>Submit Changes</button>
+                    <button className='infoButton' onClick={this.toggleEdit}>Cancel</button>
+                    </div>
+                </>
             )
 
         }

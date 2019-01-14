@@ -1,13 +1,38 @@
+.placeholder{
+    background-color: white;
+    border-radius: 3px;
+    padding: 1vh;
+    height: 20vh;
+    width: 70vw;
+    display: flex;
+    flex-flow: column;
+    /* justify-content: space-around; */
+    align-items: center;
+    margin-top: 1vh;
+    justify-content: center;
+}
+.textAnswer{
+    display: flex;
+    flex-direction: row;
+}
+.hidden{
+    display: none;
+}
+.show{
+    display: show;
+    overflow: auto;
+}
 .createBox{
     width: 75vw;
     /* min-height: 85vh; */
-    background-color: var(--overcast);
     margin: 2vh;
     display: flex;
     align-items: center;
     padding-top: 2vh;
     flex-direction: column;
     border-radius: 3px;
+    /* box-shadow: 1px 1px 7px -2px black,-1px -1px 7px -2px rgb(39, 39, 39); */
+
 }
 
 #fullCenter{
@@ -23,6 +48,8 @@
     display: flex;
     flex-direction: column;
     border-radius: 3px;
+    box-shadow: 1px 1px 7px -2px black,-1px -1px 7px -2px rgb(39, 39, 39);
+
 }
 .logo{
 height: 15vh;
@@ -31,10 +58,44 @@ border-radius: 50%;
 background-color: black;
 
 }
+.multipleChoice{
+    height: 3vh;
+}
+.multiAnswer{
+    height: 3vh;
+    padding:  5px;
+}
+.placeholderQuestion {
+    box-shadow: 1px 1px 7px -2px black,-1px -1px 7px -2px rgb(39, 39, 39);
+    background-color: white;
+    border-radius: 3px;
+    padding: 1vh;
+    height: 20vh;
+    width: 70vw;
+    display: flex;
+    flex-flow: column;
+    /* justify-content: space-around; */
+    align-items: center;
+    margin-top: 1vh;
+    justify-content: center;
+}
+.inputQuestion{
+    width: 70%;
+    height: 30%;
+    margin: 5px;
+}
+.inputPoints{
+    width: 40%;
+    margin: 5px;
+    margin-left: 15px;
+}
 .infos{
 display: flex;
 justify-content: space-around;
+font-size: 16px;
+font-weight: bold;
 }
+
 .info{
     margin-bottom: .75vh;
     height: 30%;
@@ -45,9 +106,30 @@ justify-content: space-around;
     border-radius: 50%;
     background-color: black;
 }
-.createListingButton{
-    margin: 1%;
-    background: var(--comfyGray);
+.addAnotherQuestion{
+    position: relative;
+    color: white;
+    margin-top: 15px;
+ /* margin-bottom: 2vh; */
+height: 4vh;
+width: 10vw;
+border: solid rgb(85, 85, 85) 1px;
+background: var(--overcast);
+    box-shadow: none;
+    border: solid 1px black;
+    border-radius: 3px;
+  }
+  .asbolute{
+      position: relative;
+  }
+  .submitListing{
+    color: white;
+    margin-top: 15px;
+ /* margin-bottom: 2vh; */
+height: 4vh;
+width: 10vw;
+border: solid rgb(85, 85, 85) 1px;
+background: var(--overcast);
     box-shadow: none;
     border: solid 1px black;
     border-radius: 3px;
@@ -67,6 +149,8 @@ justify-content: space-around;
         .topInfoContainer{
             width: 33.3%;
             height: 100%;
+            font-weight: bold;
+            font-size: 16px
         }
 .companyInfo{
 width: 90%;
@@ -74,19 +158,43 @@ height: 3vh;
 }
 .createListingP{
     height: 2vh;
-    font-size: 100%;
+    font-size: 16px;
     margin: 0;
     padding: 0;
+    font-weight: bold;
+}
+.textAnswer{
+display: flex;
+flex-direction: row;
+overflow: auto
 }
 .textArea{
     height: 70%;
     width: 90%;
 }
+.leftQuestion{
+    width:40%;
+    display: flex;
+    flex-flow: column;
+}
+.anothermulti{
+    position: absolute;
+    right: 1px;
+    bottom: 2px;
+    color: white;
+ /* margin-bottom: 2vh; */
+height: 4vh;
+width: 15%;
+border: solid rgb(85, 85, 85) 1px;
+background: var(--overcast);
+border-radius: 3px;
+}
 .question{
+    position: relative;
     height: 100%;
     width: 100%;
     text-align: left;
     display: flex;
-    flex-flow: column;
+    flex-flow: row;
     /* align-items: flex-start */
 }

@@ -1,0 +1,17 @@
+.answeredQuestion{
+    text-align: left;
+}
+.questionHolder{
+    display: flex;
+    flex-flow: column;
+    justify-content: left;
+}
+.questionQ{
+    margin: 5px;
+font-size: 18px;
+font-weight: bold;
+}
+.answerQ{
+font-size: 16px;
+margin-left: 15px;
+}

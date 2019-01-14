@@ -108,6 +108,10 @@ border: solid rgb(85, 85, 85) 1px;
 background: var(--overcast);
 border-radius: 3px;
 }
+.submitButton:hover{
+    cursor: pointer;
+    background: var(--hover)
+}
 .answerableQuestion{
     margin: 1vh;
 }

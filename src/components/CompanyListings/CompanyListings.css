@@ -48,6 +48,10 @@ font-size: 300%;
 border-radius: 4px;
 border: solid black 1px;
 }
+.build:hover{
+    cursor: pointer;
+    background: var(--hover)
+}
 .companyComplatedListingHolder{
     position: relative;
 }
@@ -70,12 +74,19 @@ border: solid rgb(85, 85, 85) 1px;
 background: var(--overcast);
 border-radius: 3px;
 }
+#completeListingButton:hover{
+    cursor: pointer;
+    background: var(--hover)
+}
 #red{
 background: red;
+width: 25%;
 }
 #green{
     background: green;
+    
 }
 #yellow{
     background: yellow;
+    width: 50%
 }

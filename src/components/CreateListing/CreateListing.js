@@ -52,6 +52,7 @@ class CreateListing extends Component {
     render() {
         if (this.state.amountOfQuestions === this.state.amountOfUploads) {
             console.log(this.state.amountOfQuestions, this.state.amountOfUploads, 'createlisting')
+            alert('Your listing has been posted')
             return (<Redirect to={`/company/listings/${this.props.id}`} />)
         }
         let questions = this.questionRender(this.state.amountOfQuestions)
@@ -95,8 +96,10 @@ class CreateListing extends Component {
 
                     </div>
                     {questions}
-                    <button className='createListingButton' onClick={this.addOne}>Add another Question?</button>
-                    <button className='createListingButton' onClick={this.submitApplication}>Submit Application</button>
+                    <div className='absolute'>
+                    <button className='addAnotherQuestion' onClick={this.addOne}>Add another Question?</button>
+                    </div>
+                    <button className='submitListing' onClick={this.submitApplication}>Submit Application</button>
                 </div>
             </div>
         );

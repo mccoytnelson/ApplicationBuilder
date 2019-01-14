@@ -17,10 +17,9 @@ class Question extends Component {
     }
     render() {
         return (
-            <div className='placeholder'>
-                <div>{this.props.info.question}</div>
-                <hr />
-                <div>{this.state.answer.answer}</div>
+            <div className='answeredQuestion'>
+                <div className='questionQ'>{this.props.info.question}</div>
+                <div className='answerQ'>{this.state.answer.answer}</div>
             </div>
         )
     }

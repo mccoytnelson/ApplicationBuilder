@@ -13,6 +13,7 @@ class Listing extends Component {
                     </div>
                     <div id='positionPos'>
                         <div id='topInfoPosition'>{listing.position}</div>
+                        <div id='topInfoPosition'>{listing.salary}</div>
                     </div>
                     <div className='listingDescription'>Description: {listing.description}</div>
                 </div>
