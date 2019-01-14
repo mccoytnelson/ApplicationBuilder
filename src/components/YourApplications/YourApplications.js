@@ -22,7 +22,7 @@ export default class YourApplications extends Component {
         this.state.listings.map(
             (e) => {
                 return all.push(
-                    <div className='listingHolder' key={e.completed_id}>
+                    <div className='listingHolderYours' key={e.completed_id}>
                     <RenderCompletedListing deleteListing={this.deleteListing} listing={e} ids={e}/>
                     </div>
                 )

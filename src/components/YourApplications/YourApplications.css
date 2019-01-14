@@ -10,6 +10,20 @@
     text-decoration: none;
     font-size:100%;
   }
+  .listingHolderYours{
+    position: relative;
+    max-height: 15vh;
+    display: flex;
+    background-color: var(--backgrounds);
+    width: 60%;
+    margin: 5px;
+    padding: 5px;
+    /* height: 15vh; */
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 1px 1px 7px -2px black,-1px -1px 7px -2px rgb(39, 39, 39);
+    /* border: solid rgb(85, 85, 85) 1px; */
+}
   #completeListingButton:hover{
     background-color: rgb(236, 236, 236);
     cursor: pointer
@@ -24,7 +38,9 @@
     background: var(--hover)
   }
   .listingRightSideYours{
-      /* position: relative; */
+      position: relative;
+      bottom: 1px;
+      right:1px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -34,8 +50,8 @@
   .fillAppButtonYours{
     color: white;
  /* margin-bottom: 2vh; */
-height: 4vh;
-width: 6vw;
+height: 5vh;
+width: 7vw;
 border: solid rgb(85, 85, 85) 1px;
 background: var(--overcast);
 border-radius: 3px;
