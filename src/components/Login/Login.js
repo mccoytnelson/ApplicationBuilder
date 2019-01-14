@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link,Redirect } from 'react-router-dom'
 import { uploadData } from '../../ducks/reducer'
 import { connect } from 'react-redux';
 import './Login.css'
@@ -8,14 +8,19 @@ class Login extends Component {
   constructor() {
     super()
     this.state = {
-
+      render: false
     }
     this.login = this.login.bind(this);
   }
   async login() {
     let { email, password } = this.state;
+    let noe
     let res = await axios.post('/auth/login', { email, password });
     this.props.uploadData(res.data);
+    if(res.data){
+      this.setState({render: <Redirect to='/listings'/>}) 
+    }
+    return noe
   }
   reset = async () => {
     await axios.get('/auth/reset',
@@ -23,6 +28,7 @@ class Login extends Component {
     )
   }
   render() {
+    if(this.state.render){return this.state.render}
     return (
       <div className='loginHolder'>
         <div className='innerLogin'>
@@ -34,7 +40,7 @@ class Login extends Component {
           <p className='loginText'>Password</p>
           <input placeholder='Password...' onChange={(e) => { this.setState({ password: e.target.value }) }} type="password" />
           <div></div>
-          <Link className='login' to='/'><button className='loginButton' onClick={this.login}>Login</button></Link>
+         <div className='login'><button className='loginButton' onClick={this.login}>Login</button></div>
           <p className='newUser'>New User? <Link to='/signup'><button className='loginButton'>Signup</button></Link></p>
         </div>
       </div>

@@ -2,22 +2,26 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import {uploadData} from '../../../ducks/reducer'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link,Redirect} from 'react-router-dom'
 import './SignUp.css'
 
 class Login extends Component {
   constructor() {
     super()
     this.state = {
-    checked:false
+    checked:false,
+    redirecter: false
     }
     this.signUp = this.signUp.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
   async signUp() {
-    let { email, password,name,phone,address,resume,portfolio,url,companyName,companyAddress,summary,companyPhone, companyUrl } = this.state;
-    let res = await axios.post('/auth/signup', { email, password, name, phone,address,resume,portfolio,url,companyName,companyAddress,summary,companyPhone,companyUrl })
-    this.props.uploadData(res.data);
+    if(this.state.name && this.state.email && this.state.password){
+      let { email, password,name,phone,address,resume,portfolio,url,companyName,companyAddress,summary,companyPhone, companyUrl } = this.state;
+      let res = await axios.post('/auth/signup', { email, password, name, phone,address,resume,portfolio,url,companyName,companyAddress,summary,companyPhone,companyUrl })
+      this.props.uploadData(res.data);
+        this.setState({redirecter: <Redirect to='/listings'/>})
+    } else { alert('You need at least Name,Email,Password')}
   }
   handleChange() {
     this.setState({
@@ -25,6 +29,7 @@ class Login extends Component {
     })
   }
   render() {
+    if(this.state.redirecter){return this.state.redirecter}
     // console.log(this.props.match)
     const {checked} = this.state
     const hidden = this.state.checked ? 'notHidden' : 'hidden';
@@ -62,7 +67,7 @@ class Login extends Component {
       </div>
       <div className='signupButtons'>
        <Link to='/'> <button className='signupButton'>Cancel</button></Link>
-       <Link to='/'> <button className='signupButton'onClick={this.signUp}>Signup</button></Link>
+       <div > <button className='signupButton'onClick={this.signUp}>Signup</button></div>
        </div>
       </>
     );

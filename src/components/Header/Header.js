@@ -22,12 +22,13 @@ class Header extends Component {
         console.log(this.props.location.pathname)
         let {pathname} = this.props.location
         let ifLogged, ifCompany, ifUser, ifAccount, ifInformation,hovLogged,hovYourApp,hovInfo,hovCompany,hovAll
-        if(pathname == '/login'){hovLogged = 'on';}
+        if(pathname === '/login'){hovLogged = 'on';}
         else if(pathname === '/'){hovLogged = 'on'}
+        else if(pathname === '/signup'){hovLogged = 'on'}
         else if(pathname.includes('/information')){hovInfo = 'on'}
         else if(pathname.includes( `/company` || '/create')){hovCompany = 'on'}
-        else if (pathname.includes('/create')){{hovCompany = 'on'}}
-        else if (pathname.includes('status')){{hovCompany = 'on'}}
+        else if (pathname.includes('/create')){hovCompany = 'on'}
+        else if (pathname.includes('status')){hovCompany = 'on'}
         else if(pathname.includes(`applications`)){hovYourApp = 'on'}
         else if(pathname ==='/listings' || `/listings/apply/${this.props.match.params}`){hovAll = 'on'}
         else{hovAll = null; hovYourApp = null; hovCompany = null; hovInfo = null}
