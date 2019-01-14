@@ -1,24 +1,46 @@
 .completeListingButton{
+    color: white;
     margin: 1%;
     height: 100%;
     width: 60%;
-    background: var(--comfyGray);
+    background: var(--overcast);
     box-shadow: none;
     border: solid 1px black;
     border-radius: 3px;
     text-decoration: none;
-    color: black;
     font-size:100%;
   }
-  .completeListingButton:hover{
+  #completeListingButton:hover{
     background-color: rgb(236, 236, 236);
     cursor: pointer
   }
   .buttonWrap{
-      height: 38%;
+      /* height: 38%; */
       width:100%;
-      margin-bottom: 3px;
+      margin-top: 5px;
   }
   #delete:hover{
       background: rgb(255, 182, 182)
   }
+  .listingRightSideYours{
+      /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:20%;
+    /* height: 150%;  */
+  }
+  .fillAppButtonYours{
+    color: white;
+ /* margin-bottom: 2vh; */
+height: 4vh;
+width: 6vw;
+border: solid rgb(85, 85, 85) 1px;
+background: var(--overcast);
+border-radius: 3px;
+}
+/* .yoursButtons{
+    position: relative;
+    height: 100%;
+    bottom: 10px;
+} */

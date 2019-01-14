@@ -25,9 +25,9 @@ export default class ListingStatus extends Component {
             (e) => {
                 // this.setState({amount: this.state.amount + 1})
                 return (
-                    // <div key={e.completed_id}>
+                    <div className='listingHolderStatus'>
                     <CompanyCompletedListing key={e.completed_id} tick={this.tick} points={e.sum} ids={e} />
-                    // </div>
+                    </div>
                 )
             }
             )
@@ -48,14 +48,18 @@ export default class ListingStatus extends Component {
         }
         console.log(mapped[0])
         return (
-            <div>
-                <button >Alphabetize</button>
-                <button >Date</button>
-                <button>Percentage Match</button>
-                <p>Custom Search</p>
-                <input /><button>Search</button>
+            <>
+                <div className='searchBar'>
+                    <button className='searchButton' id='searchInputButton' onClick={this.customInput}>Search</button>
+                    <input className='searchInput' placeholder='Search...' onChange={(e)=>this.setState({search:e.target.value })} />
+                    <button className='searchButton' onClick={this.alphabetize}>A-Z</button>
+                    <button className='searchButton' onClick={this.dealphabetize}>Z-A</button>
+                    <button className='searchButton' onClick={this.newest}>Newest</button>
+                    <button className='searchButton' onClick={this.oldest}>Oldest</button>
+                    <button className='searchButton' onClick={this.oldest}>% Match</button>
+                    </div>
                 {mapped}
-            </div>
+            </>
         )
     }
 }

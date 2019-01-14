@@ -5,18 +5,20 @@ class Listing extends Component {
     render() {
         let { listing } = this.props
         return (
-            <div className='innerListing'> 
-            <div className='innerInnerListing'>
-                <div className='topInfo'> 
-                    <div className='topInfoInner'>{listing.company_name}</div>
-                    <div className='topInfoInner'>{listing.location}</div>
-                    <div className='topInfoInner'>{listing.position}</div>
-                </div>
-                <div className='listingDescription'>Description: {listing.description}</div>
+            <div className='innerListing'>
+                <div className='innerInnerListing'>
+                    <div className='topInfo'>
+                        <div id='topInfoCompany'>{listing.company_name}</div>
+                        <div id='topInfoLocation'>{listing.location}</div>
+                    </div>
+                    <div id='positionPos'>
+                        <div id='topInfoPosition'>{listing.position}</div>
+                    </div>
+                    <div className='listingDescription'>Description: {listing.description}</div>
                 </div>
                 <div className='listingRightSide'>
                     <div className='timeStamp'>{listing.timestamp.slice(0, 10)}</div>
-                    <Link  to={`/listings/apply/${listing.listing_id}`}><button className='fillAppButton'>Apply</button></Link>
+                    <Link className='applyHolder' to={`/listings/apply/${listing.listing_id}`}><button className='fillAppButton'>Apply</button></Link>
                 </div>
             </div>
         )

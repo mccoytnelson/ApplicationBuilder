@@ -73,7 +73,7 @@ width: 90%;
 height: 3vh;
 }
 .createListingP{
-    height: 2vh%;
+    height: 2vh;
     font-size: 100%;
     margin: 0;
     padding: 0;
@@ -81,4 +81,12 @@ height: 3vh;
 .textArea{
     height: 70%;
     width: 90%;
+}
+.question{
+    height: 100%;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    flex-flow: column;
+    /* align-items: flex-start */
 }

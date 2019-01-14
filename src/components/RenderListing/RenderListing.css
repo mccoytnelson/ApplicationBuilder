@@ -1,0 +1,118 @@
+.renderListing{
+    text-align: left;
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    font-size: 16px;
+}
+.card{
+    margin: 1vh;
+    display: flex;
+    padding: 1vh;
+    background: white;
+    /* height: 25v/h; */
+    border-radius: 4px;
+    width: 80%;
+    box-shadow: 1px 1px 7px -2px black,-1px -1px 7px -2px rgb(39, 39, 39);
+}
+.topInfoApplication{
+    height: 15%;
+    position: relative;
+    display: flex;
+    justify-content: space-between
+}
+.detailHolder{
+    margin-top: 2vh;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 1px 1px 7px -2px black,-1px -1px 7px -2px rgb(39, 39, 39);    height: 15vh;
+    padding: 5px;
+    overflow: hidden;
+}
+.innerInnerListingApplication{
+width: 90%;
+height: 100%
+}
+.select{
+    width: 60%;
+    margin-left: 10px;
+
+}
+#topInfoPositionApplication{
+font-weight: bold;
+margin-left: 15px;
+}
+#topInfoLocationApplication{
+    position: relative;
+    right: 500px;
+}
+.listingDescriptionApplication{
+    font-size: 16px;
+    text-align: left;
+    color: black;
+margin-top: 10px;
+    padding: 5px;
+    border-top: solid gray 1px;
+    width: 110%;
+    height: 30%;
+    overflow: auto
+}
+.companySummaryApplication{
+font-size: 16px;
+text-align: left;
+color: black;
+margin-top: 10px;
+padding: 5px;
+border-top: solid gray 1px;
+width: 110%;
+height: 30%;
+overflow: auto
+}
+.listingRightSideApplication{
+    width: 10%;
+    right:1px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center
+    }
+#topInfoCompanyApplication{
+    font-size: 22px;
+    font-weight: bolder;
+}
+.questionHolder{
+    position: relative;
+    margin: 1vh;
+    display: flex;
+    flex-flow: column;
+    padding: 1vh;
+    background: white;
+    border-radius: 4px;
+    width: 80%;
+    box-shadow: 1px 1px 7px -2px black,-1px -1px 7px -2px rgb(39, 39, 39);
+}
+.buttonHolder{
+    display: flex;
+    justify-content: center;
+}
+.submitButton{
+    position: relative;
+    margin: 1vh;
+    bottom: 10px;
+    color: white;
+ /* margin-bottom: 2vh; */
+height: 4vh;
+width: 20vw;
+border: solid rgb(85, 85, 85) 1px;
+background: var(--overcast);
+border-radius: 3px;
+}
+.answerableQuestion{
+    margin: 1vh;
+}
+.applicationTextArea{
+    margin-left: 10px;
+    width: 65%;
+    height: 53px;
+}

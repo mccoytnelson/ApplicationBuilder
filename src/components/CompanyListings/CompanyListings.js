@@ -26,7 +26,7 @@ class CompanyListings extends Component {
         this.state.listings.map(
             (e) => {
                 return all.push(
-                    <div className='listingHolder' key={e.listing_id}>
+                    <div className='listingHolderCompany' key={e.listing_id}>
                         <RenderCompanyListing deleteListing={this.deleteListing} completed={this.state.completed} listing={e} />
                     </div>
                 )

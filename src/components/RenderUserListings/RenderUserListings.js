@@ -14,7 +14,7 @@ class RenderUserListings extends Component {
     }
     async componentDidMount() {
         let res = await axios.get(`/retrieve/completed/${this.props.match.params.id}`)
-        // console.log(res.data)
+        console.log(res.data)
         let listing = await axios.get(`/retrieve/listing/${res.data.listing_id}`)
         let questions = await axios.get(`/retrieve/questions/${res.data.listing_id}`)
         // let answers = await axios.get(`/retrieve/answered/${res.data.completed_id}`)

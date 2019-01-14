@@ -1,1 +1,1 @@
-select SUM(cast(not_choice_points as int)) from question where listing_id=83;
+select SUM(cast(not_choice_points as int)) from question where listing_id=$1;

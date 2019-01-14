@@ -7,7 +7,7 @@
   width: 100%
 }
 .lessThan8{
-    display: flex;
+display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   min-height: 89vh;
@@ -15,29 +15,47 @@
   width: 100%
 }
 .listingHolder{
+    position: relative;
     display: flex;
     background-color: var(--backgrounds);
     width: 45%;
     margin: 5px;
-    height: 15vh;
+    padding: 5px;
+    /* height: 15vh; */
     overflow: hidden;
     border-radius: 4px;
+    box-shadow: 1px 1px 7px -2px black,-1px -1px 7px -2px rgb(39, 39, 39);
     /* border: solid rgb(85, 85, 85) 1px; */
 }
 .fillAppButton{
+    position: relative;
+    bottom: 10px;
     color: white;
- margin-bottom: 2vh;
+ /* margin-bottom: 2vh; */
 height: 4vh;
-width: 8vh;
+width: 6vw;
 border: solid rgb(85, 85, 85) 1px;
 background: var(--overcast);
 border-radius: 3px;
 }
+.fillAppButton:hover{
+    cursor: pointer;
+    background: var(--hover)
+}
+.applyHolder{
+    position: relative;
+    /* display: flex; */
+}
+.applyHolder:hover{
+    cursor: default;
+}
 .timeStamp{
+    font-size: 14px;
     color: black;
     margin-top: 5px
 }
 .innerInnerListing{
+    height: 100%;
     width:80%;
     margin: 5px
 }
@@ -56,25 +74,42 @@ border-radius: 3px;
     height: 100%;
     }
 .listingDescription{
+    font-size: 12px;
+    text-align: left;
     color: black;
 margin-top: 10px;
 /* background:var(--comfyGray); */
     padding: 5px;
-    border: solid gray 1px;
-    border-radius: 5px;
-    width: 103%;
-    height: 63%;
-    overflow: auto
+    border-top: solid gray 1px;
+    width: 100%;
+    height: 60%;
+    overflow: auto;
+ margin-bottom: 1vh;
 }
-.topInfoInner{
-    color: black;
-    /* background: var(--comfyGray);
-    padding: 5px;
-    border: solid gray 1px;
-    border-radius: 5px; */
-    /* margin: 5px; */
+#topInfoCompany{
+    font-size: 18px;
+        font-weight: bolder;
+
+}
+#topInfoLocation{
+    font-size: 13px;
+    position: relative;
+    right: 20%;
+}
+#topInfoPosition{
+    position: relative;
+    font-size: 14px;
+    left: 10px;
+    font-weight: bold
+
+}
+#positionPos{
+    display: flex;
+    justify-content: left;
+    position: relative;
 }
 .topInfo{
+    position: relative;
     display: flex;
     justify-content: space-between
 }

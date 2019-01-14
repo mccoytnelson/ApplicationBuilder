@@ -28,9 +28,10 @@ align-items: center;
     top:1vh;
 }
 .loginButton{
-    width: 7vw;
-    height: 3vh;
-    background: var(--comfyGray);
+    color: white;
+    width: 8vw;
+    height: 3.5vh;
+    background: var(--overcast);
     box-shadow: none;
     border: solid 1px black;
     border-radius: 3px;

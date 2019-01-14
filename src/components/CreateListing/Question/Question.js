@@ -67,15 +67,17 @@ class Question extends Component {
         const hidden = checked ? 'show' : 'hidden';
         return (
             <div className='placeholder'>
-                <input placeholder='Write question here' onChange={(e) => { this.setState({ question: e.target.value }) }} />
-                <input placeholder='total points?' onChange={(e) => { this.setState({ points: e.target.value }) }}/>
-                <div className='textAnswer'>
-                    <input type='checkbox' checked={checked} onChange={this.handleChange} />
-                    <div>Multiple Choice?</div>
-                </div>
-                <div className={hidden}>
-                    {multi}
-                    <button className='createListingButton' onClick={this.addOne}>Add another answer?</button>
+                <div className='question'>
+                    <input placeholder='Write question here' onChange={(e) => { this.setState({ question: e.target.value }) }} />
+                    <input placeholder='total points?' onChange={(e) => { this.setState({ points: e.target.value }) }} />
+                    <div className='textAnswer'>
+                        <input type='checkbox' checked={checked} onChange={this.handleChange} />
+                        <div>Multiple Choice?</div>
+                    </div>
+                    <div className={hidden}>
+                        {multi}
+                        <button className='createListingButton' onClick={this.addOne}>Add another answer?</button>
+                    </div>
                 </div>
             </div>
         )

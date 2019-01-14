@@ -59,20 +59,23 @@ export default class YourApplications extends Component {
         let mapped = (<div>Not Connected To DataBase</div>)
         if (this.state.listings) {
             mapped = this.mapListings()
+            return (
+                <>
+                    <div className='searchBar'>
+                        <button className='searchButton' id='searchInputButton' onClick={this.customInput}>Search</button>
+                        <input className='searchInput' placeholder='Search...' onChange={(e)=>this.setState({search:e.target.value })} />
+                        <button className='searchButton' onClick={this.alphabetize}>A-Z</button>
+                        <button className='searchButton' onClick={this.dealphabetize}>Z-A</button>
+                        <button className='searchButton' onClick={this.newest}>Newest</button>
+                        <button className='searchButton' onClick={this.oldest}>Oldest</button>
+                        </div>
+                    <hr/>
+                    {mapped}
+                </>
+            )
+        } else {
+           return <div>Loading</div>
         }
-        return (
-            <>
-                <div className='searchBar'>
-                    <button className='searchButton' id='searchInputButton' onClick={this.customInput}>Search</button>
-                    <input className='searchInput' placeholder='Search...' onChange={(e)=>this.setState({search:e.target.value })} />
-                    <button className='searchButton' onClick={this.alphabetize}>A-Z</button>
-                    <button className='searchButton' onClick={this.dealphabetize}>Z-A</button>
-                    <button className='searchButton' onClick={this.newest}>Newest</button>
-                    <button className='searchButton' onClick={this.oldest}>Oldest</button>
-                    </div>
-                <hr/>
-                {mapped}
-            </>
-        )
+        
     }
 }

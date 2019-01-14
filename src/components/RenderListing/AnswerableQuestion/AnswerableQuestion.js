@@ -20,16 +20,14 @@ class AnswerableQuestion extends Component {
         }
     }
     handleChange = (selectedOption) => {
-        console.log(selectedOption)
         this.setState({ answer: selectedOption.answer,points: selectedOption.points});
-        console.log(this.state)
       }
     whichInput() {
         let boolean = this.props.info.choice
         if (boolean === 'true') {
-            return <Select value={this.state.selectedOption} onChange={this.handleChange} options={this.state.choices}/>
+            return <Select className='select' classNamePrefix='select' value={this.state.selectedOption} onChange={this.handleChange} options={this.state.choices}/>
         } else {
-            return <input onChange={(e)=>{this.setState({answer: e.target.value, points: 2})}}/>
+            return <textarea className='applicationTextArea' onChange={(e)=>{this.setState({answer: e.target.value, points: 2})}}/>
         }
     }
     async uploadAnswerableQuestion(data){
@@ -49,9 +47,13 @@ class AnswerableQuestion extends Component {
             this.uploadAnswerableQuestion(upload[0]);
         }
         return (
-            <div>
+            <div className='answerableQuestion'>
+                <div>
                 {info.question}
+                </div>
+                <>
                 {input}
+                </>
                 {/* <button onClick={()=>{console.log(this.state)}}>state</button> */}
             </div>
         )

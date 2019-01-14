@@ -29,7 +29,31 @@ class CompanyCompletedListing extends Component {
         }
         let { ids } = this.props
         return (
-            <div className='companyComplatedListingHolder'>
+            <div className='innerListing'>
+                <div className='innerInnerListing'>
+                    <div className='topInfo'>
+                        <div id='topInfoCompany'>{ids.name}</div>
+                        <div className='colorDot' id={colorChange}>Percentage Match: {this.state.match}%</div>
+                        
+                    </div>
+                    <div id='positionPos'>
+                        <div id='topInfoPosition'>{ids.email}</div>
+                    </div>
+                    <div className='leftAlign' >
+                    <div>   Address: {ids.address}</div>
+                    <div>   Phone Number: {ids.phone_number}</div>
+                    </div>
+                </div>
+                <div className='listingRightSide'>
+                    <div className='timeStamp'>{ids.timestamp.slice(0, 10)}</div>
+                    <Link className='applyHolder' to={`/completed-application/${this.props.ids.completed_id}`}><button id='completeListingButton'>Review Application</button></Link>
+                </div>
+            </div>
+            
+        )
+    }
+}
+{/* <div className='innerInnerListing'>
                 <div className='colorDot' id={colorChange}></div>
                 <div>Applicant: {ids.name}</div>
                 <div>Email: {ids.email}</div>
@@ -39,11 +63,7 @@ class CompanyCompletedListing extends Component {
                 <div>Percentage Match: {this.state.match}%</div>
                 <Link to={`/completed-application/${this.props.ids.completed_id}`}><button>See Completed Application</button></Link>
                 <hr />
-            </div>
-        )
-    }
-}
-
+            </div> */}
 function mapStateToProps(state) {
     return { ...state }
 }

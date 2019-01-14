@@ -1,6 +1,39 @@
 .CompanyListing{
     padding-top: 2vh;
 }
+.listingHolderCompany{
+    position: relative;
+    display: flex;
+    background-color: var(--backgrounds);
+    width: 45%;
+    margin: 5px;
+    height: 15vh;
+    padding: 5px;
+    /* height: 15vh; */
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 1px 1px 7px -2px black,-1px -1px 7px -2px rgb(39, 39, 39);
+    /* border: solid rgb(85, 85, 85) 1px; */
+}
+.leftAlign{
+    margin-left: 10px;
+    display: flex;
+    flex-flow: column;
+    text-align: left;
+}
+.listingHolderStatus{
+    position: relative;
+    display: flex;
+    background-color: var(--backgrounds);
+    width: 45%;
+    margin: 5px;
+    padding: 5px;
+    height: 10vh;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 1px 1px 7px -2px black,-1px -1px 7px -2px rgb(39, 39, 39);
+    /* border: solid rgb(85, 85, 85) 1px; */
+}
 .build{
     color: white;
     text-decoration: none;
@@ -19,12 +52,23 @@ border: solid black 1px;
     position: relative;
 }
 .colorDot{
-    position: absolute;
-    right: 5px;
-    width: 3vh;
-    height: 3vh;
-    border-radius: 50%;
+    position: relative;
+    right: 1%;
+    width: 60%;
+    height: 2vh;
+    border-radius: 4px;
     background: gray
+}
+#completeListingButton{
+    position: relative;
+    bottom: 10px;
+    color: white;
+ /* margin-bottom: 2vh; */
+height: 4vh;
+width: 6vw;
+border: solid rgb(85, 85, 85) 1px;
+background: var(--overcast);
+border-radius: 3px;
 }
 #red{
 background: red;
