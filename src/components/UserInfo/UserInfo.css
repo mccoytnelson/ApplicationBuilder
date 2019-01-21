@@ -47,3 +47,9 @@ margin: 5px;
     cursor: pointer;
     background: var(--hover)
 }
+@media (max-width : 500px) {
+    .infoButton{
+        width: 40%;
+        height: 60px;
+    }
+}

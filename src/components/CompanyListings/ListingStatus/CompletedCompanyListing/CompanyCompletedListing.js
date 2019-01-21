@@ -8,7 +8,7 @@ class CompanyCompletedListing extends Component {
         this.state = {
             points: {},
             match: 0,
-            account: { timestamp: '' }
+            account: { timestamp: 'lol' }
 
         }
     }
@@ -53,7 +53,7 @@ class CompanyCompletedListing extends Component {
                         </div>
                     </div>
                     <div className='listingRightSide'>
-                        <div className='timeStamp'>{account.timestamp.slice(0, 10)}</div>
+                        {/* <div className='timeStamp'>{account.timestamp.slice(0, 10)}</div> */}
                         <Link className='applyHolder' to={`/completed-application/${this.props.ids.completed_id}`}><button id='completeListingButton'>Review Application</button></Link>
                     </div>
                 </div>

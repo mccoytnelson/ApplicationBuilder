@@ -91,3 +91,11 @@ background: red;
 #brightGreen{
     background: rgb(0, 243, 0)
 }
+@media (max-width : 500px) {
+.listingHolderCompany{
+    width: 100%;
+    min-height: 19vh;
+    height: inherit
+}
+
+}

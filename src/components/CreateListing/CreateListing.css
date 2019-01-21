@@ -141,7 +141,6 @@ background: var(--overcast);
 .companyInfoContainer{
     width: 100%;
     position: relative;
-    /* left: 1vw; */
     display: flex;
     justify-content: space-between;
     height: 20%;
@@ -198,3 +197,77 @@ border-radius: 3px;
     flex-flow: row;
     /* align-items: flex-start */
 }
+@media (max-width : 600px) {
+    .container{
+       width: 90vw;
+       height: inherit;
+       display: flex;
+       flex-flow: column;
+       align-content: center;
+       justify-content: center;
+    }
+    .createBox{
+        width: 90vw;
+    }
+    .topInfoContainer{
+        width: 100%;
+        height: inherit;
+        /* margin-top: 20px; */
+        margin-bottom: 20px;
+    }
+    .companyInfo{
+        height: 4vh;
+    }
+    .companyInfoContainer{
+        flex-flow: column;
+        align-content: center;
+        /* height: 40vh; */
+        width: 95vw;
+    }
+    .info{
+        height: inherit;
+    }
+    .textArea{
+        height: 17vh;
+    }
+    .addAnotherQuestion{
+        width: 200px;
+        height: 50px;
+    }
+    .submitListing{
+        width: 200px;
+        height: 50px;
+    }
+    .placeholderQuestion{
+        width: 90vw;
+        display: flex;
+        flex-flow: column;
+        height: inherit
+    }
+    .question{
+        display: flex;
+        flex-flow: column;
+        height: inherit;
+        overflow: visible;
+    }
+    .leftQuestion{
+        width: 90%;
+    }
+    .inputQuestion{
+        width: 100%;
+    }
+    .anothermulti{
+position: relative;
+    }
+    .textAnswer{
+        flex-flow: column;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+    .multiAnswer{
+        width: 85vw;
+    }
+    .multipleChoice{
+        width: 40vw;
+    }
+    }
